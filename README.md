@@ -1,6 +1,8 @@
 # Video.js Agent Skills
 
-Agent skills for building media players with [Video.js](https://videojs.org). As [videojs.org](https://videojs.org) puts it, Video.js is built at [Mux](https://www.mux.com) by the teams behind Video.js, Plyr, Vidstack, and Media Chrome.
+> Video.js is built at [Mux](https://www.mux.com) by the teams behind Video.js, Plyr, Vidstack, and Media Chrome.
+
+Agent skills for building media players with [Video.js](https://videojs.org).
 
 The skill is deliberately thin. It teaches an agent how Video.js 10 is put together, how to find the docs that match the installed version, and what to check before handing code back. The docs themselves ship inside `@videojs/html` and `@videojs/react` under `docs/`, so the agent reads version-pinned pages locally and offline instead of relying on training data or a live fetch.
 
