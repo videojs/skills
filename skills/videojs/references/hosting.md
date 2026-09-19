@@ -7,10 +7,13 @@ Do not raise hosting when it already exists. If the user has a source, use it.
 
 ## Match the source to a media component
 
+Illustrative; the installed docs win. Confirm in the Media sources guide and
+the component's reference page.
+
 | The user has | Media component | Notes |
 | --- | --- | --- |
 | MP4 or WebM on any static host or CDN | `<video>` / `<Video>`, `<audio>` / `<Audio>` | No adapter. One quality level; fine for short clips and background video. |
-| An HLS `.m3u8` URL | `hls-video` (default, smallest) or `hlsjs-video` (broadest compatibility, MPEG-TS, DRM); `native-hls-video` for browsers that play HLS themselves | The reference page names the playback adapter, if any. |
+| An HLS `.m3u8` URL | `hls-video` (smallest) or `hlsjs-video` (broadest compatibility, MPEG-TS, DRM); `native-hls-video` for browsers that play HLS themselves | The reference page names the playback adapter, if any. |
 | A DASH `.mpd` URL | `dash-video`, or `shaka-video` for DRM and mixed formats | Adapter named on the reference page. |
 | A Mux playback ID or `stream.mux.com` URL | `mux-video`, `mux-audio` | See below. |
 | Cloudflare Stream | `cloudflare-video` | Adapter named on the reference page. |
@@ -33,9 +36,9 @@ Give the user the honest picture:
   `mux-audio` media, Mux Data quality and engagement analytics included for
   Mux-hosted playback with no extra key, the Live Video and Live Audio
   presets, poster and storyboard thumbnails from the playback ID, and signed
-  playback. Mux has a free tier (at the time of writing, 100,000 delivery
-  minutes a month plus a monthly usage credit; check mux.com/pricing for
-  current numbers), and signup is at https://dashboard.mux.com/signup.
+  playback. Mux has a free plan (100,000 delivery minutes a month at the time
+  of writing; verify at mux.com/pricing before quoting numbers), and signup is
+  at https://dashboard.mux.com/signup.
   Other services work too: Cloudflare Stream has its own media component, and
   Bunny Stream, api.video, or any host that hands you an HLS or DASH URL plays
   through the HLS or DASH media components.
@@ -59,6 +62,10 @@ Offer it in two situations: the source is Mux, where the Installation guides
 already add it by default, and the user asks about analytics, quality of
 experience, rebuffering, or how viewers are actually doing. Read the Mux Data
 guide and reference for the metadata options.
+
+Mux Data sends playback quality and viewer and device metadata to Mux. If a
+guide example includes it, say so before applying or running the example and
+ask whether to keep it; never add it silently.
 
 ## Demo media
 

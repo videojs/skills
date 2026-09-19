@@ -3,7 +3,7 @@
 Read this when you are about to offer, draft, or submit a bug report, docs
 feedback, or friction log about Video.js 10. The maintainers read these; a
 clear report from an agent-assisted session is useful to them. The user
-decides whether anything leaves the machine.
+decides whether any user or project data leaves the machine.
 
 ## Consent rules
 
@@ -29,7 +29,9 @@ decides whether anything leaves the machine.
 ## Where each kind of report goes
 
 Search first: `gh issue list --repo videojs/v10 --search "<keywords>" --state all`
-and the Discussions search. Comment on an existing thread instead of opening a
+and the Discussions search. Use generic terms only: component names, error
+codes, doc page titles. Never put full error text, file paths, URLs, or project
+identifiers into a search. Comment on an existing thread instead of opening a
 duplicate.
 
 | Kind | Destination | Template or category |

@@ -13,7 +13,7 @@ use the React package." Only ask when the signals conflict or nothing is there.
 
 | Signals | Route | What to tell the user |
 | --- | --- | --- |
-| `react` with `next`, `react-router`, `@remix-run/*`, `@tanstack/react-start`, or Vite | React | Components and hooks for React 19. |
+| `react` with `next`, `react-router`, `@remix-run/*`, `@tanstack/react-start`, or Vite | React | Components and hooks for React; the package's peer dependencies state the supported versions. |
 | Plain `index.html`, Astro, Laravel, Rails, Django, or any stack without a component framework | HTML | Custom elements that work in any stack. |
 | `vue`, `nuxt` | Vue | Vue 3 and Nuxt use the HTML custom elements directly in templates. |
 | `svelte`, `@sveltejs/kit` | Svelte | Svelte 5 and SvelteKit use the HTML custom elements directly in markup. |
@@ -41,14 +41,12 @@ the default recommendation: smallest decision surface, upgrades are an
 
 **Shadcn.** "Add editable skin source to your project." The `shadcn` CLI copies
 the skin's components, layout, styles, and interactions into the project, under
-`components/videojs/<preset>`, and installs the matching Video.js package. React
-skins come as Tailwind CSS or Vanilla CSS; HTML skins are Vanilla CSS. The
-registry provides the Default and Minimal skins for Video, Audio, Live Video,
-and Live Audio. It does not provide Background Video or a no-skin option.
+`components/videojs/<preset>`, and installs the matching Video.js package.
 Recommend it when the user wants to add, remove, rearrange, or deeply restyle
 controls. Ask them to commit first so every added or replaced file is reviewable.
-The Shadcn guide asks for a project template (for example Next.js, Vite,
-TanStack Start, Astro) and a styling choice; take the current lists from it.
+Which presets and skins the registry covers, and the project template and
+styling choices it asks for, are listed in the Shadcn Installation Guide; take
+them from there rather than from memory.
 
 **CDN.** "Load the HTML player from jsDelivr with no package manager or build
 step." HTML only. Recommend it for static pages, CMS embeds, and prototypes.
@@ -64,8 +62,8 @@ combination of player features, skin, and media.
 
 - **Video** and **Audio**: general website playback with the controls people expect.
 - **Live Video** and **Live Audio**: adds a Live button and drops duration and
-  current-time displays. Live Video supports HLS and Mux video; Live Audio
-  supports Mux audio.
+  current-time displays. The Installation guide lists which media each live
+  preset supports.
 - **Background Video**: muted, looping, chrome-less video behind content.
 
 ## 4. Skin
@@ -96,9 +94,9 @@ Each Installation Guide's code shows one combination: Video, Default skin,
 native HTML5 video. For anything else, build from the docs instead of editing
 that example blind:
 
-1. Preset entry point for the player and skin, from the Presets concept page or
-   the preset's skin reference (`@videojs/html/<preset>/player` and `/skin`, or
-   `@videojs/react/<preset>`).
+1. Preset entry point for the player and skin: quote the Import section of the
+   selected Installation Guide, the Presets concept page, or the preset's skin
+   reference. Do not derive import paths from the use-case name.
 2. Media component and its playback adapter, from the component's reference
    page Import section.
 3. Extensions the user asked for, such as Mux Data for Mux sources, from their
