@@ -80,8 +80,8 @@ Each one narrows the next, and together they decide what gets installed.
    prototypes.
 3. **Use case**, which selects a preset: Video, Audio, Live Video, Live Audio,
    or Background Video.
-4. **Skin**: Default, Minimal, or No skin. Shadcn ships Default and Minimal
-   source only, and no Background Video.
+4. **Skin**: Default (frosted) or Minimal (flat, bordered), same controls in
+   both; or No skin. Shadcn ships Default and Minimal, not Background Video.
 5. **Media source**: which sources each use case supports, and which need a
    playback adapter package, are listed in the Installation guide. If the user
    has no streaming source yet, asks where to host, or asks about analytics,
@@ -137,7 +137,7 @@ Video.js 8 docs live at `legacy.videojs.org`.
 
 ## Where to start, by task
 
-Open these from `llms.txt` by title; slugs vary between versions.
+Open these from `llms.txt` by title.
 
 | Task | Read first |
 | --- | --- |

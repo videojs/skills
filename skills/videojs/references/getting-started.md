@@ -70,8 +70,14 @@ combination of player features, skin, and media.
 
 ## 4. Skin
 
-- **Default**: full controls, menus, captions, and dialogs.
-- **Minimal**: play, seek, and volume controls; closer to a classic control bar.
+Default and Minimal are two looks for the same player. Both bring the full
+control set: controls, tooltips, captions, keyboard shortcuts, touch gestures,
+and a settings menu that appears when there is something to put in it.
+
+- **Default**: the modern, frosted look with translucent, blurred surfaces.
+- **Minimal**: the visually lighter look, with flat backgrounds and visible
+  borders, closer to a classic control bar. "Minimal" describes the aesthetic,
+  not the number of controls.
 - **No skin**: player and media behavior with no packaged UI, for users who
   will compose their own layout from UI components. Not offered with Shadcn.
 
