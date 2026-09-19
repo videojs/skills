@@ -28,10 +28,10 @@ answering API questions from memory.
 **Installed packages carry their own docs.** They match the installed version,
 work offline, and are the source of truth for that project. Use them in this order:
 
-1. **Bundled docs.** `node_modules/@videojs/html/docs/llms.txt` or
-   `node_modules/@videojs/react/docs/llms.txt`. It indexes every page with a
-   title and description; links are relative `.md` files in the same directory.
-   Read the index, then only the pages the task needs.
+1. **Bundled docs.** `node_modules/@videojs/<html|react>/docs/llms.txt`. It
+   indexes every page with a title and description; links are relative `.md`
+   files in the same directory. Read the index, then only the pages the task
+   needs.
 2. **The live site**, when nothing is installed yet or the project loads from
    the CDN. `https://videojs.org/docs/framework/<html|react>/llms.txt`, and any
    doc URL with `.md` appended (or the `Accept: text/markdown` header).

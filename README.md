@@ -57,7 +57,7 @@ With your permission, the skill can also draft bug reports, docs feedback, and f
 
 ## How the docs are found
 
-1. `node_modules/@videojs/html/docs/llms.txt` or `node_modules/@videojs/react/docs/llms.txt`, bundled with every release.
+1. `node_modules/@videojs/<html|react>/docs/llms.txt`, bundled with every release.
 2. [videojs.org](https://videojs.org/docs/framework/html/llms.txt) as Markdown when nothing is installed yet, with pre-release pages on [main.videojs.org](https://main.videojs.org/llms.txt).
 
 See the [Build with AI](https://videojs.org/docs/framework/html/guides/build-with-ai) guide for other ways to feed Video.js docs to your tools.
