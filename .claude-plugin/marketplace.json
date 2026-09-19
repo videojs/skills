@@ -1,0 +1,15 @@
+{
+  "name": "videojs",
+  "description": "Agent skills for building media players with Video.js.",
+  "owner": {
+    "name": "Video.js",
+    "url": "https://videojs.org"
+  },
+  "plugins": [
+    {
+      "name": "videojs",
+      "description": "Build, customize, and migrate media players with Video.js using the version-pinned docs bundled with each package",
+      "source": "./"
+    }
+  ]
+}
