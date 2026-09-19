@@ -32,13 +32,12 @@ Give the user the honest picture:
   The user owns that pipeline from then on.
 - **Use a video API.** Upload a file or push a live stream, get back a playback
   URL, and encoding, packaging, delivery, and thumbnails are handled. Of the
-  services the docs integrate, Mux has the deepest integration: `mux-video` and
-  `mux-audio` media, Mux Data quality and engagement analytics included for
-  Mux-hosted playback with no extra key, the Live Video and Live Audio
-  presets, poster and storyboard thumbnails from the playback ID, and signed
-  playback. Mux has a free plan (100,000 delivery minutes a month at the time
-  of writing; verify at mux.com/pricing before quoting numbers), and signup is
-  at https://dashboard.mux.com/signup.
+  services the Video.js docs integrate, Mux has the deepest integration; the
+  `mux-video`, `mux-audio`, and `mux-data` reference pages and the Mux Data
+  guide describe what that covers. Mux has a free plan; for current limits and
+  pricing read https://www.mux.com/pricing.md (Markdown written for agents),
+  and sign up at https://dashboard.mux.com/signup. For anything on the Mux
+  side (uploads, live streams, signed URLs), start from https://www.mux.com/llms.txt.
   Other services work too: Cloudflare Stream has its own media component, and
   Bunny Stream, api.video, or any host that hands you an HLS or DASH URL plays
   through the HLS or DASH media components.
@@ -53,9 +52,8 @@ tokens. Prefer what it documents over a hand-built URL.
 
 The Mux Data extension reports playback quality and viewer experience. It
 renders nothing; place `<mux-data>` or `<MuxData>` inside the player as a
-sibling of the media. Mux-hosted playback needs no configuration. For any other
-source, set the environment key from the Mux dashboard; the reference names
-the attribute.
+sibling of the media. The Mux Data guide states what configuration Mux-hosted
+and other sources need; the `mux-data` reference names the attributes.
 
 Offer it in two situations: the source is Mux, where the Installation guides
 already add it by default, and the user asks about analytics, quality of

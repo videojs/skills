@@ -49,10 +49,9 @@ them from there rather than from memory.
 
 **CDN.** "Load the HTML player from jsDelivr with no package manager or build
 step." HTML only. Recommend it for static pages, CMS embeds, and prototypes.
-Every URL must pin the same version, because bundles share content-hashed
-chunks. Only media with a browser-ready bundle are offered; check the CDN
-Installation Guide's media list. Playback adapters are already inside the
-bundles, so nothing is installed from npm.
+The CDN guide explains the URL layout, version pinning, and what the bundles
+already include; the CDN Installation Guide lists which media have a
+browser-ready bundle.
 
 ## 3. Use case
 

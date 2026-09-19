@@ -46,9 +46,10 @@ duplicate.
 
 Confirm the current template names at
 https://github.com/videojs/v10/issues/new/choose and the discussion categories
-at https://github.com/videojs/v10/discussions before building a link. Do not
-add labels or a type prefix to the title; the repository's triage bot owns
-both. Do not report user mistakes or unsupported setups as bugs.
+at https://github.com/videojs/v10/discussions before building a link. Follow
+the template as written; do not add labels or a title prefix unless it asks,
+since repository automation handles triage. Do not report user mistakes or
+unsupported setups as bugs.
 
 ## Prefilled links
 
@@ -72,8 +73,8 @@ https://github.com/videojs/v10/discussions/new?category=<slug>&title=<title>&bod
 Long reports can exceed URL limits. If so, give the user the bare `new` link
 for the right template plus the Markdown to paste into each field.
 
-With permission to send directly, submit a plain issue and let the triage bot
-add labels and type:
+With permission to send directly, submit a plain issue and leave labels and
+type to repository automation:
 
 ```bash
 gh issue create --repo videojs/v10 --title "<title>" --body-file report.md

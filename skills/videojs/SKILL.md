@@ -158,9 +158,9 @@ Open these from `llms.txt` by title.
   user's source.
 - Every import matches a reference page's Import section or a key in the
   package's `exports`; playback adapters named there are installed.
-- Bundled scripts load with `type="module"`; every CDN URL pins the same version.
-- Autoplaying media is `muted` and `playsinline`; live sources use a live
-  preset or the stream-type setting the media reference documents.
+- Script loading and CDN URL pinning follow the Installation and CDN guides.
+- Autoplay follows the Autoplay guide; live sources use a live preset or the
+  stream-type setting the media reference documents.
 - The skin stylesheet is imported once; TypeScript and bundler settings match
   the TypeScript and Bundlers guides.
 - Vue, Nuxt, Svelte, and SvelteKit wiring matches the framework guide:
