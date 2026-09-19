@@ -36,7 +36,7 @@ work offline, and are the source of truth for that project. Use them in this ord
    the CDN. `https://videojs.org/docs/framework/<html|react>/llms.txt`, and any
    doc URL with `.md` appended (or the `Accept: text/markdown` header).
    Pre-release docs for unreleased APIs live at `main.videojs.org`. Avoid
-   `llms-full.txt`; it is about 1 MB.
+   `llms-full.txt`, the whole corpus in one file.
 
 If none of these are reachable, say so, use installed types under
 `node_modules/@videojs/*/dist`, and do not invent version-dependent details.
@@ -56,7 +56,9 @@ instead of inventing a comparison.
 ## Start from the user's setup
 
 Detect what you can, confirm the rest, and settle these five choices in order.
-Each one narrows the next, and together they decide what gets installed.
+Each one narrows the next, and together they decide what gets installed. The
+Installation guide's "Choose" sections carry the current options; take every
+list from there, not from memory.
 
 1. **JS framework.** Read `package.json` and the project layout:
    `react` (with `next`, `react-router`, `@remix-run/*`, `@tanstack/react-start`,
@@ -64,33 +66,32 @@ Each one narrows the next, and together they decide what gets installed.
    `@sveltejs/kit` means Svelte. Astro, Laravel, other frameworks, or no
    package.json means HTML. A `<script>` from `cdn.jsdelivr.net/npm/@videojs/cdn`
    means the CDN is already in use.
-2. **Install method.** Three alternatives, not steps:
+2. **Install method.** Three alternatives, not steps; the guide shows which
+   apply to the framework:
 
-   | Method | One line for the user | Available for |
-   | --- | --- | --- |
-   | **Packaged** | Install packages and use a ready-made skin. | React, HTML, Vue, Svelte |
-   | **Shadcn** | Add editable skin source to your project. | React, HTML |
-   | **CDN** | Load the HTML player from jsDelivr with no package manager or build step. | HTML |
+   | Method | One line for the user |
+   | --- | --- |
+   | **Packaged** | Install packages and use a ready-made skin. |
+   | **Shadcn** | Add editable skin source to your project. |
+   | **CDN** | Load the HTML player from jsDelivr with no package manager or build step. |
 
    Check for `components.json` in the app directory: if present, the project
    already uses shadcn, so recommend Shadcn and skip the guide's initialize
    step. Otherwise default to Packaged. Offer Shadcn when the user wants to
    change controls or layout, not just colors. Offer CDN for static pages and
    prototypes.
-3. **Use case**, which selects a preset: Video, Audio, Live Video, Live Audio,
-   or Background Video.
+3. **Use case**, which selects a preset: on-demand video or audio, live
+   variants, or background video. The guide lists the current presets.
 4. **Skin**: Default (frosted) or Minimal (flat, bordered), same controls in
-   both; or No skin. Shadcn ships Default and Minimal, not Background Video.
-5. **Media source**: which sources each use case supports, and which need a
-   playback adapter package, are listed in the Installation guide. If the user
-   has no streaming source yet, asks where to host, or asks about analytics,
-   read `references/hosting.md`.
+   both; or No skin. The Shadcn guide states which skins it provides as source.
+5. **Media source**: the guide lists which sources each use case supports and
+   which need a playback adapter package. If the user has no streaming source
+   yet, asks where to host, or asks about analytics, read `references/hosting.md`.
 
-Then open the matching guide from `llms.txt`: React, HTML, Vue, Svelte, Shadcn,
-or CDN Installation Guide. Its "Choose" sections explain every option; its code
-shows the default combination (Video, Default skin, HTML5 video). For any other
-combination, compose from the preset entry point and the media component's
-reference page rather than guessing. `references/getting-started.md` has the
+Then open the matching Installation Guide from `llms.txt` (one per framework,
+plus Shadcn and CDN). Its code shows one default combination; for any other,
+compose from the Import sections of the preset, skin, and media component
+reference pages rather than guessing. `references/getting-started.md` has the
 explanation to give the user for each option.
 
 ## Say it the way the docs do
@@ -109,7 +110,8 @@ explanation to give the user for each option.
 
 ## The mental model
 
-Every player is a tree of three kinds of parts, plus optional extensions.
+Every player is a tree of three kinds of parts, plus optional extensions. The
+names below are examples; reference pages are authoritative.
 
 | Part | Job | HTML | React |
 | --- | --- | --- | --- |
@@ -118,12 +120,12 @@ Every player is a tree of three kinds of parts, plus optional extensions.
 | Media | Plays the source; a "player with no UI". Native `<video>`, or one per engine or service. | `<video>`, `<hls-video>`, `<mux-video>`, `<youtube-video>` | `<Video>`, `<HlsVideo>`, `<MuxVideo>`, `<YouTubeVideo>` |
 | Extension | Adds behavior without UI or playback. | `<mux-data>`, `<google-cast>` | `<MuxData>`, `<GoogleCast>` |
 
-- **HTML imports register elements as a side effect**, one entry point each:
-  `import '@videojs/html/video/player'`, `'@videojs/html/video/skin'`,
-  `'@videojs/html/media/hls-video'`, `'@videojs/html/ui/play-button'`.
-  Vue, Svelte, and Astro use these same elements.
-- **React imports are named**: `import { VideoPlayer, VideoSkin, Video } from '@videojs/react/video'`
-  plus the skin stylesheet `import '@videojs/react/video/skin.css'`.
+- **HTML imports register elements as a side effect**, one entry point each,
+  for example `import '@videojs/html/video/player'`. Vue, Svelte, and Astro
+  use these same elements.
+- **React imports are named**, for example
+  `import { VideoPlayer, VideoSkin, Video } from '@videojs/react/video'`, plus
+  the skin stylesheet the guide names.
 - **Custom UI reads state through the player**: `PlayerController` in HTML,
   `usePlayer` in React.
 
@@ -158,10 +160,11 @@ Open these from `llms.txt` by title.
   package's `exports`; playback adapters named there are installed.
 - Bundled scripts load with `type="module"`; every CDN URL pins the same version.
 - Autoplaying media is `muted` and `playsinline`; live sources use a live
-  preset or set `stream-type`.
-- The React skin's CSS is imported once; TypeScript uses `moduleResolution: bundler`.
-- Vue templates list Video.js tags in `isCustomElement`; Nuxt and SvelteKit
-  keep element imports static and touch the element only after mount.
+  preset or the stream-type setting the media reference documents.
+- The skin stylesheet is imported once; TypeScript and bundler settings match
+  the TypeScript and Bundlers guides.
+- Vue, Nuxt, Svelte, and SvelteKit wiring matches the framework guide:
+  custom-element registration, static imports, mount-time access.
 - Nothing from Video.js 8 leaked in: no `videojs()`, `class="video-js"`,
   `data-setup`, or `registerPlugin`; no `controls` on the media element when a
   skin or custom UI provides controls.

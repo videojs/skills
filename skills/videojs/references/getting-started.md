@@ -15,8 +15,8 @@ use the React package." Only ask when the signals conflict or nothing is there.
 | --- | --- | --- |
 | `react` with `next`, `react-router`, `@remix-run/*`, `@tanstack/react-start`, or Vite | React | Components and hooks for React; the package's peer dependencies state the supported versions. |
 | Plain `index.html`, Astro, Laravel, Rails, Django, or any stack without a component framework | HTML | Custom elements that work in any stack. |
-| `vue`, `nuxt` | Vue | Vue 3 and Nuxt use the HTML custom elements directly in templates. |
-| `svelte`, `@sveltejs/kit` | Svelte | Svelte 5 and SvelteKit use the HTML custom elements directly in markup. |
+| `vue`, `nuxt` | Vue | Vue and Nuxt use the HTML custom elements directly in templates. |
+| `svelte`, `@sveltejs/kit` | Svelte | Svelte and SvelteKit use the HTML custom elements directly in markup. |
 | No `package.json`, or a `<script>` from `cdn.jsdelivr.net/npm/@videojs/cdn` | HTML, via CDN | Browser-ready files, no build step. |
 
 Astro projects with React islands can take either the React or the HTML route;
@@ -26,8 +26,7 @@ project template later, so note the exact meta-framework.
 ## 2. Install method
 
 Present the methods available for the framework as alternatives, not steps.
-React offers Packaged and Shadcn. HTML offers Packaged, Shadcn, and CDN. Vue
-and Svelte offer Packaged.
+The Installation guide shows which methods each framework offers.
 
 Before presenting them, look for `components.json` in the app directory (or
 the app workspace in a monorepo). If it exists, the project already uses
@@ -41,7 +40,7 @@ the default recommendation: smallest decision surface, upgrades are an
 
 **Shadcn.** "Add editable skin source to your project." The `shadcn` CLI copies
 the skin's components, layout, styles, and interactions into the project, under
-`components/videojs/<preset>`, and installs the matching Video.js package.
+the directory the guide names, and installs the matching Video.js package.
 Recommend it when the user wants to add, remove, rearrange, or deeply restyle
 controls. Ask them to commit first so every added or replaced file is reviewable.
 Which presets and skins the registry covers, and the project template and
@@ -58,7 +57,8 @@ bundles, so nothing is installed from npm.
 ## 3. Use case
 
 "Which kind of player is this?" The answer selects a preset, a ready-made
-combination of player features, skin, and media.
+combination of player features, skin, and media. The Installation guide lists
+the current presets; at the time of writing:
 
 - **Video** and **Audio**: general website playback with the controls people expect.
 - **Live Video** and **Live Audio**: adds a Live button and drops duration and
@@ -77,16 +77,16 @@ and a settings menu that appears when there is something to put in it.
   borders, closer to a classic control bar. "Minimal" describes the aesthetic,
   not the number of controls.
 - **No skin**: player and media behavior with no packaged UI, for users who
-  will compose their own layout from UI components. Not offered with Shadcn.
+  will compose their own layout from UI components. The Shadcn guide states
+  which skins it offers as source.
 
 ## 5. Media source
 
-"What will it play?" Options depend on the use case. Native HTML5 video and
-audio and Background Video need no separate package. HLS, DASH, Mux, and the
-embed players (YouTube, Vimeo, Cloudflare Stream, TikTok, Twitch, Spotify)
-have their own media component, and most need a playback adapter package named
-in that component's reference page. A source URL is optional; the guides use
-working demo media when it is empty.
+"What will it play?" Options depend on the use case, and the Installation
+guide lists them. Native HTML5 video and audio need no separate package.
+Streaming formats and hosted services each have a media component, and most
+need a playback adapter package named in that component's reference page. A
+source URL is optional; the guides use working demo media when it is empty.
 
 ## Composing beyond the default example
 

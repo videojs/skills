@@ -36,33 +36,37 @@ duplicate.
 
 | Kind | Destination | Template or category |
 | --- | --- | --- |
-| Reproducible wrong behavior in a package | videojs/v10 issue | Bug Report, `1.bug_report.yml` |
-| A doc page contradicts the code, an example fails, an Import section is missing, a bundled `.md` link is broken | videojs/v10 issue | Docs Feedback, `3.docs_feedback.yml` |
-| Small enhancement | videojs/v10 issue | Feature Request, `2.feature_request.yml` |
+| Reproducible wrong behavior in a package | videojs/v10 issue | Bug Report |
+| A doc page contradicts the code, an example fails, an Import section is missing, a bundled `.md` link is broken | videojs/v10 issue | Docs Feedback |
+| Small enhancement | videojs/v10 issue | Feature Request |
 | Substantial feature or design proposal | videojs/v10 discussion | Ideas |
 | Friction log: where you had to guess, what took several tries, what a page should have said | videojs/v10 discussion | Ideas, or General |
 | A question with no clear answer in the docs | videojs/v10 discussion | Q&A |
 | This skill fired wrongly, routed to the wrong page, or stated something false | videojs/skills issue | none |
 
-Do not add labels or a type prefix to the title; the repository's triage bot
-owns both. Do not report user mistakes or unsupported setups as bugs.
+Confirm the current template names at
+https://github.com/videojs/v10/issues/new/choose and the discussion categories
+at https://github.com/videojs/v10/discussions before building a link. Do not
+add labels or a type prefix to the title; the repository's triage bot owns
+both. Do not report user mistakes or unsupported setups as bugs.
 
 ## Prefilled links
 
 The issue templates are GitHub issue forms, so a `body` parameter is ignored.
 Prefill `title` and each text field by its `id`; the user picks the dropdowns
-and checkboxes themselves. URL-encode every value.
+and checkboxes themselves. Read the template filenames and field ids from the
+YAML under `.github/ISSUE_TEMPLATE/` in videojs/v10 (for example with
+`gh api repos/videojs/v10/contents/.github/ISSUE_TEMPLATE`), not from memory.
+URL-encode every value.
 
 ```text
-https://github.com/videojs/v10/issues/new?template=1.bug_report.yml&title=<title>&description=...&str=...&actualbehavior=...&expectedbehavior=...&environment=...&version=...&errors=...
-https://github.com/videojs/v10/issues/new?template=3.docs_feedback.yml&title=<title>&description=...&why-description=...
-https://github.com/videojs/v10/issues/new?template=2.feature_request.yml&title=<title>&motivation=...&description=...&expectedbehavior=...&alternatives=...
+https://github.com/videojs/v10/issues/new?template=<file>.yml&title=<title>&<field-id>=<value>&<field-id>=<value>
 ```
 
-Discussions take a category, title, and body:
+Discussions take a category slug, title, and body:
 
 ```text
-https://github.com/videojs/v10/discussions/new?category=ideas&title=<title>&body=<body>
+https://github.com/videojs/v10/discussions/new?category=<slug>&title=<title>&body=<body>
 ```
 
 Long reports can exceed URL limits. If so, give the user the bare `new` link

@@ -46,17 +46,16 @@ Give the user the honest picture:
 Name the options, recommend by fit, and drop the subject once the user decides.
 
 For a Mux source, read the `mux-video` or `mux-audio` reference before writing
-code. Prefer its `source` object with `playbackId` over a hand-built URL; it
-also builds the poster and storyboard URLs and takes camelCased playback
-parameters. For signed playback, the token goes on `source.playback.token`, and
-poster and storyboard each need their own token with the right audience.
+code; it covers the `source` object, playback parameters, and signed playback
+tokens. Prefer what it documents over a hand-built URL.
 
 ## Analytics and playback quality
 
 The Mux Data extension reports playback quality and viewer experience. It
 renders nothing; place `<mux-data>` or `<MuxData>` inside the player as a
 sibling of the media. Mux-hosted playback needs no configuration. For any other
-source, set `env-key` (HTML) or `envKey` (React) from the Mux dashboard.
+source, set the environment key from the Mux dashboard; the reference names
+the attribute.
 
 Offer it in two situations: the source is Mux, where the Installation guides
 already add it by default, and the user asks about analytics, quality of
@@ -69,10 +68,9 @@ ask whether to keep it; never add it silently.
 
 ## Demo media
 
-When the user has no source yet, use the demo streams the Installation guides
-use, served from `stream.mux.com`. They cover MP4, HLS, and live. Get the
-player working with one, then swap in the user's source. Do not reach for
-random public MP4s.
+When the user has no source yet, use the demo media the Installation guides
+use. Get the player working with it, then swap in the user's source. Do not
+reach for random public MP4s.
 
 ## Wording
 
