@@ -29,6 +29,11 @@ Present the methods available for the framework as alternatives, not steps.
 React offers Packaged and Shadcn. HTML offers Packaged, Shadcn, and CDN. Vue
 and Svelte offer Packaged.
 
+Before presenting them, look for `components.json` in the app directory (or
+the app workspace in a monorepo). If it exists, the project already uses
+shadcn: lead with the Shadcn method, note that the guide's "Initialize Shadcn"
+step is already done, and reuse the existing styling choice recorded there.
+
 **Packaged.** "Install packages and use a ready-made skin." The skin stays
 inside Video.js and is styled through documented CSS custom properties. This is
 the default recommendation: smallest decision surface, upgrades are an

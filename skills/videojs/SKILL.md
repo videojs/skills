@@ -73,8 +73,11 @@ Each one narrows the next, and together they decide what gets installed.
    | **Shadcn** | Add editable skin source to your project. | React, HTML |
    | **CDN** | Load the HTML player from jsDelivr with no package manager or build step. | HTML |
 
-   Default to Packaged. Offer Shadcn when the user wants to change controls or
-   layout, not just colors. Offer CDN for static pages and prototypes.
+   Check for `components.json` in the app directory: if present, the project
+   already uses shadcn, so recommend Shadcn and skip the guide's initialize
+   step. Otherwise default to Packaged. Offer Shadcn when the user wants to
+   change controls or layout, not just colors. Offer CDN for static pages and
+   prototypes.
 3. **Use case**, which selects a preset: Video, Audio, Live Video, Live Audio,
    or Background Video.
 4. **Skin**: Default, Minimal, or No skin. Shadcn ships Default and Minimal
@@ -138,7 +141,7 @@ Open these from `llms.txt` by title; slugs vary between versions.
 
 | Task | Read first |
 | --- | --- |
-| New player, first install | The Installation Guide for the chosen framework or method, then Architecture |
+| New player, first install | The matching Installation Guide, then Architecture |
 | Pick a media engine, source type, or host | Media sources, then that media component's reference page; `references/hosting.md` |
 | Streaming (HLS, DASH, live, DRM) | Media sources, Play live streams, then the media component's reference |
 | Change colors or sizing | Customize skins, "Style a packaged skin" |
@@ -146,7 +149,7 @@ Open these from `llms.txt` by title; slugs vary between versions.
 | Custom control or state-driven UI | Build your own UI component, Features, then `PlayerController` or `usePlayer` |
 | Captions, thumbnails, quality, PiP, casting, hotkeys, autoplay, errors, analytics | The matching Playback guide, then the component references it links |
 | Build or type errors | Bundlers, TypeScript, Content Security Policy |
-| Coming from another player | The matching Migrate guide (Video.js 8, Mux Player, Plyr, Media Chrome) |
+| Coming from another player | The matching Migrate guide |
 
 ## Verify before handing off
 
