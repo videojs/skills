@@ -42,7 +42,12 @@ the default recommendation: smallest decision surface, upgrades are an
 the skin's components, layout, styles, and interactions into the project, under
 the directory the guide names, and installs the matching Video.js package.
 Recommend it when the user wants to add, remove, rearrange, or deeply restyle
-controls. Ask them to commit first so every added or replaced file is reviewable.
+controls. When the user wants a custom UI, says so, or the intended UI is clear
+from what they are asking for, do not build from bare UI components: start
+from the Shadcn installation of the closest preset and skin, then edit the
+installed source toward their design. Bare UI components are the fallback when
+no skin is close. Ask them to commit first so every added or replaced file is
+reviewable.
 Which presets and skins the registry covers, and the project template and
 styling choices it asks for, are listed in the Shadcn Installation Guide; take
 them from there rather than from memory.
@@ -76,7 +81,8 @@ and a settings menu that appears when there is something to put in it.
   borders, closer to a classic control bar. "Minimal" describes the aesthetic,
   not the number of controls.
 - **No skin**: player and media behavior with no packaged UI, for users who
-  will compose their own layout from UI components. The Shadcn guide states
+  will compose their own layout from UI components. Even then, prefer starting
+  from the closest skin's source when one is close. The Shadcn guide states
   which skins it offers as source.
 
 ## 5. Media source

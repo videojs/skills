@@ -77,9 +77,10 @@ list from there, not from memory.
 
    Check for `components.json` in the app directory: if present, the project
    already uses shadcn, so recommend Shadcn and skip the guide's initialize
-   step. Otherwise default to Packaged. Offer Shadcn when the user wants to
-   change controls or layout, not just colors. Offer CDN for static pages and
-   prototypes.
+   step. Otherwise default to Packaged. When the user wants a custom UI, says
+   so, or the intended UI is clear from the request, start from Shadcn with the
+   closest preset and skin and edit the source toward it. Offer CDN for static
+   pages and prototypes.
 3. **Use case**, which selects a preset: on-demand video or audio, live
    variants, or background video. The guide lists the current presets.
 4. **Skin**: Default (frosted) or Minimal (flat, bordered), same controls in
@@ -88,8 +89,8 @@ list from there, not from memory.
    which need a playback adapter package. If the user has no streaming source
    yet, asks where to host, or asks about analytics, read `references/hosting.md`.
 
-Then open the matching Installation Guide from `llms.txt` (one per framework,
-plus Shadcn and CDN). Its code shows one default combination; for any other,
+Then open the matching Installation Guide from `llms.txt`. Its code shows one
+default combination; for any other,
 compose from the Import sections of the preset, skin, and media component
 reference pages rather than guessing. `references/getting-started.md` has the
 explanation to give the user for each option.
@@ -110,8 +111,8 @@ explanation to give the user for each option.
 
 ## The mental model
 
-Every player is a tree of three kinds of parts, plus optional extensions. The
-names below are examples; reference pages are authoritative.
+Every player is a tree of three kinds of parts, plus optional extensions.
+Names are examples; reference pages are authoritative.
 
 | Part | Job | HTML | React |
 | --- | --- | --- | --- |
