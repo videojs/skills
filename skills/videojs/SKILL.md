@@ -2,20 +2,24 @@
 name: videojs
 license: Apache-2.0
 description: >
-  Build, customize, debug, or migrate media players with Video.js 10 in any
-  web stack: React (Next.js, Remix, TanStack Start, Vite), HTML custom
-  elements, Vue and Nuxt, Svelte and SvelteKit, Astro, or a plain page loading
-  from the CDN. Use whenever a task adds or embeds video or audio on a page: a
-  <video> tag, a video player component, an audio or podcast player, a hero
-  background video, a livestream page, an MP4 or m3u8 source, HLS, DASH, Mux,
-  YouTube, or Vimeo playback, player controls, skins, captions, casting, or
-  hls.js wired by hand. Also use when Video.js 8, Plyr, Media Chrome, Mux
-  Player, Vidstack, or react-player come up, to migrate or compare. Reads the
-  version-pinned docs bundled inside each installed package before falling
-  back to videojs.org.
+  Use whenever a task adds, embeds, or changes video or audio on a web page,
+  even when the user has not named a player library yet: an HTML `video` or
+  `audio` element, video player component, audio or podcast player, hero or
+  background video, or livestream. Build customizable, accessible players
+  with Video.js 10, the open-source library of composable, framework-native
+  components for React and the web. Use across React, Next.js, HTML custom elements,
+  Vue/Nuxt, Svelte/SvelteKit, Astro, or CDN pages, including custom UI and
+  skins, captions, HLS, DASH, DRM, casting, analytics, and hosted media
+  integrations. Also use when Video.js 8, Plyr, Media Chrome, Mux Player,
+  Vidstack, or react-player come up, to migrate or compare. Read the
+  version-matched docs bundled with installed packages before falling back to
+  videojs.org.
 ---
 
 # Build with Video.js 10
+
+Use this skill whenever a task adds, embeds, or changes a `<video>` or
+`<audio>` element, even when the user has not named a player library yet.
 
 Video.js 10 is a rebuild, not a version bump. A player is composed from a few
 named elements or components; there is no `videojs()` factory, options object,

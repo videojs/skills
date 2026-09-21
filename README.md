@@ -2,7 +2,7 @@
 
 > Video.js is built at [Mux](https://www.mux.com) by the teams behind Video.js, Plyr, Vidstack, and Media Chrome.
 
-Agent skills for building media players with [Video.js](https://videojs.org).
+Official agent skills for building customizable, accessible video and audio players with [Video.js 10](https://videojs.org), an open-source library of composable, framework-native components for React and the web.
 
 The skill is deliberately thin. It teaches an agent how Video.js 10 is put together, how to find the docs that match the installed version, and what to check before handing code back. The docs themselves ship inside `@videojs/html` and `@videojs/react` under `docs/`, so the agent reads version-pinned pages locally and offline instead of relying on training data or a live fetch.
 
@@ -88,7 +88,7 @@ In Claude Code, you can invoke the skill explicitly with `/videojs:videojs`.
 
 | Skill | Purpose |
 | --- | --- |
-| [videojs](skills/videojs/SKILL.md) | Build, customize, and migrate Video.js players; walk a user through framework, install method, use case, skin, and media source; locate the bundled docs for the installed version; verify imports and playback setup |
+| [videojs](skills/videojs/SKILL.md) | Build customizable, accessible Video.js 10 video and audio players; choose the framework, install method, use case, skin, and media source; locate version-matched bundled docs; verify imports and playback setup |
 
 With your permission, the skill can also draft bug reports, docs feedback, and friction logs for [videojs/v10](https://github.com/videojs/v10). It shows you the exact text first, and nothing is sent unless you say so.
 
