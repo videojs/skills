@@ -1,4 +1,5 @@
 {
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "videojs",
   "version": "0.1.0",
   "description": "Build, customize, debug, and migrate media players with Video.js using version-matched documentation.",
@@ -8,5 +9,13 @@
   },
   "homepage": "https://videojs.org",
   "repository": "https://github.com/videojs/skills",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "keywords": [
+    "videojs",
+    "video",
+    "media-player",
+    "streaming",
+    "hls",
+    "dash"
+  ]
 }

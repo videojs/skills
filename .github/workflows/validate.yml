@@ -1,0 +1,54 @@
+name: Validate plugin
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Validate repository packaging
+        run: node scripts/validate-plugin.mjs
+
+      - name: Validate the portable Agent Plugins manifest
+        run: |
+          python -m pip install check-jsonschema==0.38.0
+          check-jsonschema \
+            --schemafile https://agent-plugins.org/schemas/1.0.0/plugin.schema.json \
+            plugin.json
+
+      - name: Validate Claude Code packaging
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin validate .
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin validate \
+            .claude-plugin/plugin.json
+
+      - name: Discover the skill with skills.sh
+        run: npx --yes skills@1.7.0 add . --list
+
+      - name: Discover the Codex marketplace
+        run: |
+          npx --yes @openai/codex@0.154.0 plugin marketplace add . --json
+          npx --yes @openai/codex@0.154.0 plugin list \
+            --marketplace videojs \
+            --available \
+            --json > "$RUNNER_TEMP/codex-plugins.json"
+          jq -e '.. | objects | select(.name? == "videojs")' \
+            "$RUNNER_TEMP/codex-plugins.json" > /dev/null

@@ -8,33 +8,70 @@ The skill is deliberately thin. It teaches an agent how Video.js 10 is put toget
 
 You can [read SKILL.md on GitHub](https://github.com/videojs/skills/blob/main/skills/videojs/SKILL.md) or fetch its [raw Markdown](https://raw.githubusercontent.com/videojs/skills/main/skills/videojs/SKILL.md).
 
-## Install
+## Installing
+
+Choose one installation method. The plugin contains the `videojs` skill and its Markdown references only; it does not install an MCP server, hooks, executable scripts, or an account connection.
+
+### Codex
+
+Install from the Video.js plugin marketplace:
+
+```sh
+codex plugin marketplace add videojs/skills
+codex plugin add videojs@videojs
+```
+
+Start a new Codex session after installation.
 
 ### Claude Code plugin
 
-```bash
+Run these commands in your shell:
+
+```sh
 claude plugin marketplace add videojs/skills
 claude plugin install videojs@videojs
 ```
 
-### Other agents via skills.sh
+Start a new Claude Code session, or run `/reload-plugins` in an open session, after installation. From inside Claude Code, the equivalent commands are `/plugin marketplace add videojs/skills` and `/plugin install videojs@videojs`.
 
-```bash
-npx skills add videojs/skills --skill videojs
+### VS Code / GitHub Copilot
+
+Install directly from this repository:
+
+1. Enable `chat.plugins.enabled` in VS Code settings.
+2. Open the Command Palette and run **Chat: Install Plugin From Source**.
+3. Enter `https://github.com/videojs/skills`.
+
+### Cursor
+
+Open **Customize**, select **Plugins**, choose **From GitHub Repository**, and enter `https://github.com/videojs/skills`. The repository's Cursor marketplace installs the `videojs` skill.
+
+### npx skills
+
+```sh
+npx skills add https://github.com/videojs/skills --skill videojs
 ```
 
 Select your agent when prompted. Installation is project-local by default; add `-g` to install globally.
 
 ### Manual
 
-Copy the `skills/videojs` directory into your agent's skills folder, for example `.claude/skills/videojs`, `.agents/skills/videojs`, or `.cursor/skills/videojs`.
+Clone this repository and copy `skills/videojs` into the appropriate skill directory:
+
+| Agent | Skill directory |
+| --- | --- |
+| Claude Code | `~/.claude/skills/` |
+| Cursor | `~/.cursor/skills/` |
+| OpenCode | `~/.config/opencode/skills/` |
+| OpenAI Codex | `~/.codex/skills/` |
+| Pi | `~/.pi/agent/skills/` |
 
 ### Or let your agent install it
 
 Paste this into your agent:
 
 ```text
-Install the Video.js skill. If you're in Claude Code, run `claude plugin marketplace add videojs/skills`, then `claude plugin install videojs@videojs`. If you're in another agent, run `npx skills add videojs/skills --skill videojs` and select your agent. Use one installation method. You can read the skill directly at https://github.com/videojs/skills/blob/main/skills/videojs/SKILL.md (raw: https://raw.githubusercontent.com/videojs/skills/main/skills/videojs/SKILL.md). Then use the Video.js skill when working on this project.
+Install the Video.js skill using one method. In Codex, run `codex plugin marketplace add videojs/skills`, then `codex plugin add videojs@videojs`, and start a new session. In Claude Code, run `claude plugin marketplace add videojs/skills`, then `claude plugin install videojs@videojs`, and start a new session or run `/reload-plugins`. In VS Code or Cursor, install `https://github.com/videojs/skills` as a plugin from source. For another agent, run `npx skills add https://github.com/videojs/skills --skill videojs` and select the agent. Then use the Video.js skill when working on this project.
 ```
 
 ## Use

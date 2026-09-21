@@ -1,0 +1,42 @@
+{
+  "name": "videojs",
+  "version": "0.1.0",
+  "description": "Build, customize, debug, and migrate media players with Video.js using version-matched documentation.",
+  "author": {
+    "name": "Video.js",
+    "url": "https://videojs.org"
+  },
+  "homepage": "https://videojs.org",
+  "repository": "https://github.com/videojs/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "videojs",
+    "video",
+    "media-player",
+    "streaming",
+    "hls",
+    "dash"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Video.js",
+    "shortDescription": "Build and migrate Video.js media players",
+    "longDescription": "Build, customize, debug, and migrate media players with Video.js using version-matched package documentation and current framework guidance.",
+    "developerName": "Video.js",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://videojs.org",
+    "defaultPrompt": [
+      "Add an HLS player with captions and a quality menu.",
+      "Play this Mux playback ID in a Next.js app.",
+      "Migrate this Video.js 8 embed to Video.js 10."
+    ],
+    "brandColor": "#F26222",
+    "composerIcon": "./logo.svg",
+    "logo": "./logo.svg",
+    "screenshots": []
+  }
+}

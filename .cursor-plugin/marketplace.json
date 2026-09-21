@@ -1,0 +1,13 @@
+{
+  "name": "videojs",
+  "owner": {
+    "name": "Video.js"
+  },
+  "plugins": [
+    {
+      "name": "videojs",
+      "source": "./",
+      "description": "Build, customize, debug, and migrate media players with Video.js using version-matched documentation."
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 {
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "videojs",
   "description": "Agent skills for building media players with Video.js.",
   "owner": {
@@ -8,7 +9,7 @@
   "plugins": [
     {
       "name": "videojs",
-      "description": "Build, customize, and migrate media players with Video.js using the version-pinned docs bundled with each package",
+      "description": "Build, customize, debug, and migrate media players with Video.js using version-matched documentation.",
       "source": "./"
     }
   ]

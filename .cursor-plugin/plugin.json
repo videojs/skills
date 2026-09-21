@@ -8,5 +8,14 @@
   },
   "homepage": "https://videojs.org",
   "repository": "https://github.com/videojs/skills",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "keywords": [
+    "videojs",
+    "video",
+    "media-player",
+    "streaming",
+    "hls",
+    "dash"
+  ],
+  "logo": "logo.svg"
 }
