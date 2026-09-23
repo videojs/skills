@@ -15,7 +15,7 @@ one whose `package.json` lists or will list the player package:
 | --- | --- |
 | The player package is installed | `npx @videojs/react agents init` or `npx @videojs/html agents init` |
 | Working from a pnpm workspace root | `pnpm --dir <app> exec videojs-react agents init` or `pnpm --dir <app> exec videojs-html agents init` |
-| Nothing is installed yet | `npx @videojs/react@latest agents init` or `npx @videojs/html@latest agents init` |
+| Nothing is installed yet | `npx @videojs/react agents init` or `npx @videojs/html agents init` |
 | The page loads the CDN | `npx @videojs/html@<version> agents init --method cdn`, with the version from its script URL |
 
 React uses `@videojs/react`; HTML, Vue, and Svelte use `@videojs/html`. Run only
