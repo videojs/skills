@@ -128,7 +128,7 @@ Every player has three parts plus optional extensions; names are examples.
 
 ## Watch for Video.js 8
 
-Check the installed version; `video.js` on npm is still v8 until the cutover.
+The `video.js` npm package is Video.js 8; Video.js 10 ships as `@videojs/*`.
 A `class="video-js"`, `data-setup`, or `videojs(...)` call means the project is
 on v8; confirm the user wants to migrate before rewriting, then follow the
 Migrate from Video.js 8 guide. Video.js 8 docs live at `legacy.videojs.org`.
