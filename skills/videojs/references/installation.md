@@ -1,30 +1,40 @@
-# Getting started with a user
+# Installation
 
-Read this when you are about to install Video.js for someone and need to
-explain the choices. The wording below matches the Installation guides; the
-current value lists (supported media per use case, playback adapters, registry
-templates) live in those guides, so quote them from the bundled docs rather
-than from here.
+Read this before installing Video.js, switching install method, or explaining
+the choices to a user. The wording below matches the Installation guides. The
+current value lists (presets, media per preset, playback adapters, Shadcn
+templates and styling) come from the `agents init` output or those guides, not
+from here.
 
-Start with the player package's `agents init` command. When `@videojs/react`
-or `@videojs/html` is already installed, run the bare command for that package:
+## Get version-matched instructions
 
-```sh
-npx @videojs/react agents init
-npx @videojs/html agents init
-```
+Run the player package's `agents init` command from the app directory, the
+one whose `package.json` lists or will list the player package:
 
-When neither is installed yet, add `@latest` after the package name, as in
-`npx @videojs/react@latest agents init`. For a page that loads the CDN, use the
-version from its script URL instead of `latest` so the plan matches the pinned
-files. The command prints the exact flags, defaults, and compatibility rules
-for that version without changing the project. After settling the choices
-below, run it again with those flags to get one complete installation plan.
-Pass `--package-manager` to match the project's lockfile, since the plan
-otherwise uses npm, and for Shadcn pass `--template` and `--styling` to match
-the project. Add `--json` if structured output is easier to consume. If
-commands cannot run, use the matching live Installation Guide's `.md` URL and
-its documented query parameters instead.
+| Situation | Command |
+| --- | --- |
+| The player package is installed | `npx @videojs/react agents init` or `npx @videojs/html agents init` |
+| Working from a pnpm workspace root | `pnpm --dir <app> exec videojs-react agents init` or `pnpm --dir <app> exec videojs-html agents init` |
+| Nothing is installed yet | `npx @videojs/react@latest agents init` or `npx @videojs/html@latest agents init` |
+| The page loads the CDN | `npx @videojs/html@<version> agents init --method cdn`, with the version from its script URL |
+
+React uses `@videojs/react`; HTML, Vue, and Svelte use `@videojs/html`. Run only
+the command for that package. Running from the app directory matters in a
+monorepo: a bare command at the root may not see the app's installed package
+and then fetches the latest one instead.
+
+The bare command prints the exact flags, defaults, and compatibility rules for
+that version. It installs nothing and changes no files; installing is the first
+step of the plan it prints. After settling the choices below, run it again with
+them as flags to get one complete installation plan, and follow it. Also pass
+`--package-manager` to match the lockfile, since the plan otherwise uses npm,
+and for Shadcn pass `--template` and `--styling` to match the project. Add
+`--json` if structured output is easier to consume.
+
+If commands cannot run, open the matching Installation Guide from `llms.txt`
+as Markdown and use its documented query parameters instead.
+
+Detect what you can and settle the choices in this order.
 
 ## 1. JS framework
 
@@ -53,10 +63,9 @@ the app workspace in a monorepo). If it exists, the project already uses
 shadcn: lead with the Shadcn method, note that the guide's "Initialize Shadcn"
 step is already done, and pass `--styling` to match the styling recorded there.
 
-**Packaged.** "Install packages and use a ready-made skin." The skin stays
-inside Video.js and is styled through documented CSS custom properties. This is
-the default recommendation: smallest decision surface, upgrades are an
-`npm update`, and the user can move to skin source later without starting over.
+**Packaged.** "Install packages and use a ready-made skin." This is the
+default recommendation: smallest decision surface, the skin updates with the
+package, and the user can add the skin source later without starting over.
 
 **Shadcn.** "Add editable skin source to your project." The `shadcn` CLI copies
 the skin's components, layout, styles, and interactions into the project, under
@@ -112,6 +121,9 @@ guide lists them. Native HTML5 video and audio need no separate package.
 Streaming formats and hosted services each have a media component, and most
 need a playback adapter package named in that component's reference page. A
 source URL is optional; the guides use working demo media when it is empty.
+
+If the user has no streaming source yet, asks where to host, or asks about
+analytics, read `references/hosting.md`.
 
 ## Composing beyond the default example
 

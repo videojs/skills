@@ -28,23 +28,11 @@ answering API questions.
 
 Installed packages match the project, work offline, and are authoritative. Use:
 
-1. **Version-matched installation instructions.** If `@videojs/react` or
-   `@videojs/html` is installed, run `npx @videojs/react agents init` or
-   `npx @videojs/html agents init` from the app directory. From a pnpm
-   workspace, use `pnpm --dir <app> exec videojs-react agents init` or
-   `pnpm --dir <app> exec videojs-html agents init` so a bare command at the
-   root cannot fetch the latest package. If neither is installed, run
-   `npx @videojs/react@latest agents init` or
-   `npx @videojs/html@latest agents init`; for a CDN page, use the version in
-   its script URL instead of `latest`. The command prints valid choices
-   without changing files; rerun with selections for a complete plan, adding
-   `--json` when useful.
-2. **Bundled docs.** `node_modules/@videojs/<html|react>/docs/llms.txt`. It
+1. **Bundled docs.** `node_modules/@videojs/<html|react>/docs/llms.txt`. It
    indexes pages as relative `.md` links. Read only the pages the task needs.
-3. **The live site**, for docs beyond installation when nothing is installed,
-   or when commands cannot run:
-   `https://videojs.org/docs/framework/<html|react>/llms.txt`. Append
-   `.md` to doc URLs or request Markdown. Pre-release docs live at
+2. **The live site**, when nothing is installed yet:
+   `https://videojs.org/docs/framework/<html|react>/llms.txt`. Append `.md` to
+   doc URLs or request Markdown. Pre-release docs live at
    `main.videojs.org`. Avoid the whole-corpus `llms-full.txt`.
 
 If none of these are reachable, say so, use installed types under
@@ -61,43 +49,14 @@ When another player is named, open its Migrate guide (Video.js 8, Mux Player,
 Plyr, Media Chrome); for others, map their concepts onto the Architecture page
 instead of inventing a comparison.
 
-## Start from the user's setup
+## Install or change the setup
 
-Detect what you can and settle five choices in order. Take current option lists
-from the Installation guide's "Choose" sections, not from memory.
-
-1. **JS framework.** Read `package.json` and the project layout:
-   `react` (with `next`, `react-router`, `@remix-run/*`, `@tanstack/react-start`,
-   or Vite) means the React path. `vue` or `nuxt` means Vue. `svelte` or
-   `@sveltejs/kit` means Svelte. Astro, Laravel, other frameworks, or no
-   package.json means HTML. A `<script>` from `cdn.jsdelivr.net/npm/@videojs/cdn`
-   means the CDN is already in use.
-2. **Install method.** Three alternatives, not steps; the guide shows which
-   apply to the framework:
-
-   | Method | One line for the user |
-   | --- | --- |
-   | **Packaged** | Install packages and use a ready-made skin. |
-   | **Shadcn** | Add editable skin source to your project. |
-   | **CDN** | Load the HTML player from jsDelivr with no package manager or build step. |
-
-   If the app has `components.json`, recommend Shadcn and skip initialization;
-   otherwise default to Packaged. For custom UI, start with the closest Shadcn
-   preset and skin, then edit its source. Offer CDN for static pages and prototypes.
-3. **Use case**, which selects a preset: on-demand video or audio, live
-   variants, or background video. The guide lists the current presets.
-4. **Skin**: Default (frosted) or Minimal (flat, bordered), same controls in
-   both; or No skin. The Shadcn guide states which skins it provides as source.
-5. **Media source**: the guide lists which sources each use case supports and
-   which need a playback adapter package. If the user has no streaming source
-   yet, asks where to host, or asks about analytics, read `references/hosting.md`.
-
-Rerun `agents init` with the five choices and follow its plan. Also pass
-`--package-manager` to match the lockfile, since the plan defaults to npm, and
-for Shadcn, `--template` and `--styling` to match the project. If commands
-cannot run, open the matching Installation Guide from `llms.txt` and use its
-query parameters. Read component references for API detail.
-`references/getting-started.md` explains the choices to users.
+Never write installation code from memory. Before installing Video.js,
+switching install method, or explaining the choices, read
+`references/installation.md`. It starts from the player package's
+`agents init` command, which prints version-matched instructions without
+changing files, and settles framework, install method, use case, skin, and
+media source in that order.
 
 ## Say it the way the docs do
 
@@ -112,6 +71,8 @@ query parameters. Read component references for API detail.
   some media need, such as `@videojs/hlsjs-video`. **Extensions** add behavior
   with no UI, such as Mux Data or Google Cast.
 - **Preset** and **use case** are the same choice seen from two sides.
+- **Default** and **Minimal** skins have the same controls; Minimal is a flat,
+  bordered look, not a reduced control set.
 
 ## The mental model
 
@@ -145,11 +106,11 @@ Open these from `llms.txt` by title.
 
 | Task | Read first |
 | --- | --- |
-| New player, first install | The matching Installation Guide, then Architecture |
+| New player, first install | `references/installation.md`, then Architecture |
 | Pick a media engine, source type, or host | Media sources, then that media component's reference page; `references/hosting.md` |
 | Streaming (HLS, DASH, live, DRM) | Media sources, Play live streams, then the media component's reference |
 | Change colors or sizing | Customize skins, "Style a packaged skin" |
-| Change controls, layout, or interactions | Shadcn Installation Guide, then Customize skins, "Style skin source" |
+| Change controls, layout, or interactions | `references/installation.md` for the Shadcn method, then Customize skins, "Style skin source" |
 | Custom control or state-driven UI | Build your own UI component, Features, then `PlayerController` or `usePlayer` |
 | Captions, thumbnails, quality, PiP, casting, hotkeys, autoplay, errors, analytics | The matching Playback guide, then the component references it links |
 | Build or type errors | Bundlers, TypeScript, Content Security Policy |
@@ -164,8 +125,7 @@ Open these from `llms.txt` by title.
   Autoplay guide for autoplay. Live sources use the documented live setup.
 - The skin stylesheet is imported once; TypeScript and bundler settings match
   the TypeScript and Bundlers guides.
-- Vue, Nuxt, Svelte, and SvelteKit wiring matches the framework guide:
-  custom-element registration, static imports, mount-time access.
+- Vue, Nuxt, Svelte, and SvelteKit wiring matches the framework guide.
 - Nothing from Video.js 8 leaked in: no `videojs()`, `class="video-js"`,
   `data-setup`, or `registerPlugin`; no `controls` on the media element when a
   skin or custom UI provides controls.
