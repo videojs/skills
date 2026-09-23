@@ -13,7 +13,7 @@ the component's reference page.
 | The user has | Media component | Notes |
 | --- | --- | --- |
 | MP4 or WebM on any static host or CDN | `<video>` / `<Video>`, `<audio>` / `<Audio>` | No adapter. One quality level; fine for short clips and background video. |
-| An HLS `.m3u8` URL | `hls-video` (smallest) or `hlsjs-video` (broadest compatibility, MPEG-TS, DRM); `native-hls-video` for browsers that play HLS themselves | The reference page names the playback adapter, if any. |
+| An HLS `.m3u8` URL | `hlsjs-video` (broadest compatibility, MPEG-TS, DRM) or `hls-video` (smallest); `native-hls-video` for browsers that play HLS themselves | The reference page names the playback adapter, if any. |
 | A DASH `.mpd` URL | `dash-video`, or `shaka-video` for DRM and mixed formats | Adapter named on the reference page. |
 | A Mux playback ID or `stream.mux.com` URL | `mux-video`, `mux-audio` | See below. |
 | Cloudflare Stream | `cloudflare-video` | Adapter named on the reference page. |

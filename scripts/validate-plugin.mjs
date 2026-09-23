@@ -163,8 +163,10 @@ assert(
 );
 for (const field of ["composerIcon", "logo"]) {
   const assetPath = codex.interface[field];
+  assert(assetPath.startsWith("./"), `Codex ${field} must start with ./`);
   assert(existsSync(resolve(root, assetPath)), `Codex ${field} does not exist: ${assetPath}`);
 }
+assert(cursor.logo === "logo.svg", "Cursor logo must use a repository-relative path");
 assert(existsSync(resolve(root, cursor.logo)), `Cursor logo does not exist: ${cursor.logo}`);
 
 const codexMarketplace = loadJson(".agents/plugins/marketplace.json");
@@ -217,12 +219,14 @@ assertEqualArray(cursorEntry.tags, expectedTags, "Cursor plugin entry has drifte
 
 const skill = readFileSync(resolve(root, "skills/videojs/SKILL.md"), "utf8");
 assert(/^---\n[\s\S]*?^name:\s*videojs\s*$[\s\S]*?^---$/m.test(skill), "Skill frontmatter name is invalid");
+assert(Buffer.byteLength(skill, "utf8") < 10_000, "SKILL.md must stay under 10,000 bytes");
+const normalizedSkill = skill.replace(/\s+/g, " ");
 assert(
-  skill.includes("an HTML `video` or\n  `audio` element"),
+  normalizedSkill.includes("an HTML `video` or `audio` element"),
   "Skill description must route generic video and audio element tasks",
 );
 assert(
-  skill.includes("a `<video>` or\n`<audio>` element"),
+  normalizedSkill.includes("a `<video>` or `<audio>` element"),
   "Skill body must name literal video and audio elements",
 );
 

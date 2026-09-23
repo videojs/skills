@@ -58,6 +58,8 @@ jobs:
 
       - name: Smoke-test Codex installation
         run: |
+          # Replace the published URL source with this PR's checkout so the
+          # install test never falls through to the repository's main branch.
           marketplace_root="$RUNNER_TEMP/videojs-marketplace"
           install -d \
             "$marketplace_root/.agents/plugins" \
