@@ -232,7 +232,7 @@ for (const instruction of [
   "claude plugin install videojs@videojs",
   "Chat: Install Plugin From Source",
   "From GitHub Repository",
-  "npx skills add https://github.com/videojs/skills --skill videojs",
+  "npx skills add https://github.com/videojs/skills",
 ]) {
   assert(readme.includes(instruction), `README is missing: ${instruction}`);
 }

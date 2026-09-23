@@ -49,7 +49,7 @@ Open **Customize**, select **Plugins**, choose **From GitHub Repository**, and e
 ### npx skills
 
 ```sh
-npx skills add https://github.com/videojs/skills --skill videojs
+npx skills add https://github.com/videojs/skills
 ```
 
 Select your agent when prompted. Installation is project-local by default; add `-g` to install globally.
@@ -71,7 +71,7 @@ Clone this repository and copy `skills/videojs` into the appropriate skill direc
 Paste this into your agent:
 
 ```text
-Install the Video.js skill using one method. In Codex, run `codex plugin marketplace add videojs/skills`, then `codex plugin add videojs@videojs`, and start a new session. In Claude Code, run `claude plugin marketplace add videojs/skills`, then `claude plugin install videojs@videojs`, and start a new session or run `/reload-plugins`. In VS Code or Cursor, install `https://github.com/videojs/skills` as a plugin from source. For another agent, run `npx skills add https://github.com/videojs/skills --skill videojs` and select the agent. Then use the Video.js skill when working on this project.
+Install the Video.js skill using one method. In Codex, run `codex plugin marketplace add videojs/skills`, then `codex plugin add videojs@videojs`, and start a new session. In Claude Code, run `claude plugin marketplace add videojs/skills`, then `claude plugin install videojs@videojs`, and start a new session or run `/reload-plugins`. In VS Code or Cursor, install `https://github.com/videojs/skills` as a plugin from source. For another agent, run `npx skills add https://github.com/videojs/skills` and select the agent. Then use the Video.js skill when working on this project.
 ```
 
 ## Use
