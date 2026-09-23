@@ -40,15 +40,43 @@ jobs:
           npx --yes @anthropic-ai/claude-code@2.1.266 plugin validate \
             .claude-plugin/plugin.json
 
+      - name: Smoke-test Claude Code installation
+        env:
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin marketplace add ./
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin install \
+            videojs@videojs \
+            --scope user
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin list \
+            --json > "$RUNNER_TEMP/claude-plugins.json"
+          jq -e '.[] | select(.id == "videojs@videojs" and .enabled == true)' \
+            "$RUNNER_TEMP/claude-plugins.json" > /dev/null
+
       - name: Discover the skill with skills.sh
         run: npx --yes skills@1.7.0 add . --list
 
-      - name: Discover the Codex marketplace
+      - name: Smoke-test Codex installation
         run: |
-          npx --yes @openai/codex@0.154.0 plugin marketplace add . --json
+          marketplace_root="$RUNNER_TEMP/videojs-marketplace"
+          install -d \
+            "$marketplace_root/.agents/plugins" \
+            "$marketplace_root/plugins"
+          cp -R "$GITHUB_WORKSPACE" "$marketplace_root/plugins/videojs"
+          jq '.plugins |= map(if .name == "videojs" then .source = {
+            "source": "local",
+            "path": "./plugins/videojs"
+          } else . end)' \
+            .agents/plugins/marketplace.json \
+            > "$marketplace_root/.agents/plugins/marketplace.json"
+          npx --yes @openai/codex@0.154.0 plugin marketplace add \
+            "$marketplace_root" \
+            --json
+          npx --yes @openai/codex@0.154.0 plugin add \
+            videojs@videojs \
+            --json
           npx --yes @openai/codex@0.154.0 plugin list \
             --marketplace videojs \
-            --available \
             --json > "$RUNNER_TEMP/codex-plugins.json"
-          jq -e '.. | objects | select(.name? == "videojs")' \
+          jq -e '.installed[] | select(.name == "videojs")' \
             "$RUNNER_TEMP/codex-plugins.json" > /dev/null

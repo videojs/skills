@@ -10,7 +10,7 @@ You can [read SKILL.md on GitHub](https://github.com/videojs/skills/blob/main/sk
 
 ## Installing
 
-Choose one installation method. The plugin contains the `videojs` skill and its Markdown references only; it does not install an MCP server, hooks, executable scripts, or an account connection.
+Choose one installation method. Using the plugin does not start an MCP server, register hooks, run scripts, or connect an account.
 
 ### Codex
 
@@ -91,6 +91,15 @@ In Claude Code, you can invoke the skill explicitly with `/videojs:videojs`.
 | [videojs](skills/videojs/SKILL.md) | Build customizable, accessible Video.js 10 video and audio players; choose the framework, install method, use case, skin, and media source; locate version-matched bundled docs; verify imports and playback setup |
 
 With your permission, the skill can also draft bug reports, docs feedback, and friction logs for [videojs/v10](https://github.com/videojs/v10). It shows you the exact text first, and nothing is sent unless you say so.
+
+### Companion skills for custom skins
+
+These optional skills pair well with the Shadcn installation when you are editing a Video.js skin's source:
+
+- [shadcn/ui's official skill](https://ui.shadcn.com/docs/skills) for project configuration, registry commands, and theming.
+- [Emil Kowalski's skills](https://github.com/emilkowalski/skills), especially `emil-design-eng`, `animate`, and `review-animations`, for control-bar polish and motion.
+
+Video.js docs remain the source of truth for player structure, state, accessibility, and Video.js registry commands.
 
 ## How the docs are found
 
