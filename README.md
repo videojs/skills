@@ -4,7 +4,7 @@
 
 Official agent skills for building customizable, accessible video and audio players with [Video.js 10](https://videojs.org), an open-source library of composable, framework-native components for React and the web.
 
-The skill is deliberately thin. It teaches an agent how Video.js 10 is put together, how to find the docs that match the installed version, and what to check before handing code back. The docs themselves ship inside `@videojs/html` and `@videojs/react` under `docs/`, so the agent reads version-pinned pages locally and offline instead of relying on training data or a live fetch.
+The skill is deliberately thin. It teaches an agent how Video.js 10 is put together, how to get installation instructions and docs that match the installed version, and what to check before handing code back. The player packages print version-matched installation plans and ship their docs under `docs/`, so the agent can work locally and offline instead of relying on training data or a live fetch.
 
 You can [read SKILL.md on GitHub](https://github.com/videojs/skills/blob/main/skills/videojs/SKILL.md) or fetch its [raw Markdown](https://raw.githubusercontent.com/videojs/skills/main/skills/videojs/SKILL.md).
 
@@ -94,8 +94,9 @@ With your permission, the skill can also draft bug reports, docs feedback, and f
 
 ## How the docs are found
 
-1. `node_modules/@videojs/<html|react>/docs/llms.txt`, bundled with every release.
-2. [videojs.org](https://videojs.org/docs/framework/html/llms.txt) as Markdown when nothing is installed yet, with pre-release pages on [main.videojs.org](https://main.videojs.org/llms.txt).
+1. `npx @videojs/<html|react> agents init` for complete, version-matched installation instructions. The command only prints instructions.
+2. `node_modules/@videojs/<html|react>/docs/llms.txt`, bundled with every release.
+3. [videojs.org](https://videojs.org/docs/framework/html/llms.txt) as Markdown when nothing is installed yet, with pre-release pages on [main.videojs.org](https://main.videojs.org/llms.txt).
 
 See the [Build with AI](https://videojs.org/docs/framework/html/guides/build-with-ai) guide for other ways to feed Video.js docs to your tools.
 

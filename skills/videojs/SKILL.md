@@ -32,11 +32,18 @@ answering API questions from memory.
 **Installed packages carry their own docs.** They match the installed version,
 work offline, and are the source of truth for that project. Use them in this order:
 
-1. **Bundled docs.** `node_modules/@videojs/<html|react>/docs/llms.txt`. It
+1. **Version-matched installation instructions.** If `@videojs/react` or
+   `@videojs/html` is installed, run its bare instruction command first:
+   `npx @videojs/react agents init` or `npx @videojs/html agents init`. It
+   prints the valid flags, defaults, and compatibility rules for that package
+   version without installing dependencies or changing files. Run it again
+   with the selected flags for a complete plan; add `--json` when structured
+   output is more useful.
+2. **Bundled docs.** `node_modules/@videojs/<html|react>/docs/llms.txt`. It
    indexes every page with a title and description; links are relative `.md`
    files in the same directory. Read the index, then only the pages the task
    needs.
-2. **The live site**, when nothing is installed yet or the project loads from
+3. **The live site**, when nothing is installed yet or the project loads from
    the CDN. `https://videojs.org/docs/framework/<html|react>/llms.txt`, and any
    doc URL with `.md` appended (or the `Accept: text/markdown` header).
    Pre-release docs for unreleased APIs live at `main.videojs.org`. Avoid
@@ -93,11 +100,13 @@ list from there, not from memory.
    which need a playback adapter package. If the user has no streaming source
    yet, asks where to host, or asks about analytics, read `references/hosting.md`.
 
-Then open the matching Installation Guide from `llms.txt`. Its code shows one
-default combination; for any other,
-compose from the Import sections of the preset, skin, and media component
-reference pages rather than guessing. `references/getting-started.md` has the
-explanation to give the user for each option.
+If the package is installed, run its `agents init` command again with the five
+selected choices and follow the complete instructions it prints. Otherwise,
+open the matching Installation Guide from `llms.txt`; its agent-only section
+lists query parameters for a complete validated variation. Use component
+reference pages for deeper API detail rather than guessing.
+`references/getting-started.md` has the explanation to give the user for each
+option.
 
 ## Say it the way the docs do
 

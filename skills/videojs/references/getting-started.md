@@ -6,6 +6,21 @@ current value lists (supported media per use case, playback adapters, registry
 templates) live in those guides, so quote them from the bundled docs rather
 than from here.
 
+When `@videojs/react` or `@videojs/html` is already installed, start with the
+matching bare command:
+
+```sh
+npx @videojs/react agents init
+npx @videojs/html agents init
+```
+
+Use only the command for the installed player package. It prints the exact
+flags, defaults, and compatibility rules for that version without changing the
+project. After settling the choices below, run it again with those flags to get
+one complete installation plan. Add `--json` if structured output is easier to
+consume. If neither package is installed, use the matching live Installation
+Guide's `.md` URL and its documented query parameters instead.
+
 ## 1. JS framework
 
 Detect first, then confirm in one sentence: "Looks like a Next.js app, so I'll
@@ -95,9 +110,8 @@ source URL is optional; the guides use working demo media when it is empty.
 
 ## Composing beyond the default example
 
-Each Installation Guide's code shows one combination: Video, Default skin,
-native HTML5 video. For anything else, build from the docs instead of editing
-that example blind:
+The selected `agents init` command or queried Installation Guide returns the
+complete combination. Use the deeper docs to verify or extend it:
 
 1. Preset entry point for the player and skin: quote the Import section of the
    selected Installation Guide, the Presets concept page, or the preset's skin
