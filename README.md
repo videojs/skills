@@ -103,9 +103,9 @@ Video.js docs remain the source of truth for player structure, state, accessibil
 
 ## How the docs are found
 
-1. `npx @videojs/<html|react> agents init` for complete, version-matched installation instructions. Run it from the app directory that owns the installed package. From a pnpm workspace root, use `pnpm --dir <app> exec videojs-react agents init` or `pnpm --dir <app> exec videojs-html agents init`. The command only prints instructions.
+1. `npx @videojs/<html|react> agents init` for complete, version-matched installation instructions. Run it from the app directory that owns the installed package. From a pnpm workspace root, use `pnpm --dir <app> exec videojs-react agents init` or `pnpm --dir <app> exec videojs-html agents init`. Before Video.js is installed, use `npx @videojs/<html|react>@latest agents init`. The command only prints instructions.
 2. `node_modules/@videojs/<html|react>/docs/llms.txt`, bundled with every release.
-3. [videojs.org](https://videojs.org/docs/framework/html/llms.txt) as Markdown when nothing is installed yet, with pre-release pages on [main.videojs.org](https://main.videojs.org/llms.txt).
+3. [videojs.org](https://videojs.org/docs/framework/html/llms.txt) as Markdown for docs beyond installation when nothing is installed yet, or when commands cannot run, with pre-release pages on [main.videojs.org](https://main.videojs.org/llms.txt).
 
 See the [Build with AI](https://videojs.org/docs/framework/html/guides/build-with-ai) guide for other ways to feed Video.js docs to your tools.
 

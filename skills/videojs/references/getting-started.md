@@ -6,20 +6,25 @@ current value lists (supported media per use case, playback adapters, registry
 templates) live in those guides, so quote them from the bundled docs rather
 than from here.
 
-When `@videojs/react` or `@videojs/html` is already installed, start with the
-matching bare command:
+Start with the player package's `agents init` command. When `@videojs/react`
+or `@videojs/html` is already installed, run the bare command for that package:
 
 ```sh
 npx @videojs/react agents init
 npx @videojs/html agents init
 ```
 
-Use only the command for the installed player package. It prints the exact
-flags, defaults, and compatibility rules for that version without changing the
-project. After settling the choices below, run it again with those flags to get
-one complete installation plan. Add `--json` if structured output is easier to
-consume. If neither package is installed, use the matching live Installation
-Guide's `.md` URL and its documented query parameters instead.
+When neither is installed yet, add `@latest` after the package name, as in
+`npx @videojs/react@latest agents init`. For a page that loads the CDN, use the
+version from its script URL instead of `latest` so the plan matches the pinned
+files. The command prints the exact flags, defaults, and compatibility rules
+for that version without changing the project. After settling the choices
+below, run it again with those flags to get one complete installation plan.
+Pass `--package-manager` to match the project's lockfile, since the plan
+otherwise uses npm, and for Shadcn pass `--template` and `--styling` to match
+the project. Add `--json` if structured output is easier to consume. If
+commands cannot run, use the matching live Installation Guide's `.md` URL and
+its documented query parameters instead.
 
 ## 1. JS framework
 
@@ -46,7 +51,7 @@ The Installation guide shows which methods each framework offers.
 Before presenting them, look for `components.json` in the app directory (or
 the app workspace in a monorepo). If it exists, the project already uses
 shadcn: lead with the Shadcn method, note that the guide's "Initialize Shadcn"
-step is already done, and reuse the existing styling choice recorded there.
+step is already done, and pass `--styling` to match the styling recorded there.
 
 **Packaged.** "Install packages and use a ready-made skin." The skin stays
 inside Video.js and is styled through documented CSS custom properties. This is

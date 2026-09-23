@@ -33,13 +33,17 @@ Installed packages match the project, work offline, and are authoritative. Use:
    `npx @videojs/html agents init` from the app directory. From a pnpm
    workspace, use `pnpm --dir <app> exec videojs-react agents init` or
    `pnpm --dir <app> exec videojs-html agents init` so a bare command at the
-   root cannot fetch the latest package. The command prints valid choices
+   root cannot fetch the latest package. If neither is installed, run
+   `npx @videojs/react@latest agents init` or
+   `npx @videojs/html@latest agents init`; for a CDN page, use the version in
+   its script URL instead of `latest`. The command prints valid choices
    without changing files; rerun with selections for a complete plan, adding
    `--json` when useful.
 2. **Bundled docs.** `node_modules/@videojs/<html|react>/docs/llms.txt`. It
    indexes pages as relative `.md` links. Read only the pages the task needs.
-3. **The live site**, when nothing is installed yet or the project loads from
-   the CDN: `https://videojs.org/docs/framework/<html|react>/llms.txt`. Append
+3. **The live site**, for docs beyond installation when nothing is installed,
+   or when commands cannot run:
+   `https://videojs.org/docs/framework/<html|react>/llms.txt`. Append
    `.md` to doc URLs or request Markdown. Pre-release docs live at
    `main.videojs.org`. Avoid the whole-corpus `llms-full.txt`.
 
@@ -88,9 +92,11 @@ from the Installation guide's "Choose" sections, not from memory.
    which need a playback adapter package. If the user has no streaming source
    yet, asks where to host, or asks about analytics, read `references/hosting.md`.
 
-With an installed package, rerun `agents init` with the five choices and follow
-its plan. Otherwise open the matching Installation Guide from `llms.txt` and
-use its query parameters. Read component references for API detail.
+Rerun `agents init` with the five choices and follow its plan. Also pass
+`--package-manager` to match the lockfile, since the plan defaults to npm, and
+for Shadcn, `--template` and `--styling` to match the project. If commands
+cannot run, open the matching Installation Guide from `llms.txt` and use its
+query parameters. Read component references for API detail.
 `references/getting-started.md` explains the choices to users.
 
 ## Say it the way the docs do
