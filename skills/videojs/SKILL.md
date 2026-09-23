@@ -64,7 +64,7 @@ media source in that order.
   through its documented CSS custom properties.
 - **Skin source**: the skin's files copied into the project through the
   `shadcn` CLI and the Video.js registry. Say "add the skin source to your
-  project", never "eject".
+  project".
 - **Own the UI**: the handoff from a packaged skin to skin source when the user
   needs to add, remove, rearrange, or deeply restyle controls.
 - **Media** plays the source; a **playback adapter** is the companion package
