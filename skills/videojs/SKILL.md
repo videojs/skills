@@ -24,6 +24,15 @@ Video.js 10 is rebuilt around named elements and components; it has no
 training data describes Video.js 8, so read the docs before writing code or
 answering API questions.
 
+## Install or change the setup
+
+Never write installation code from memory. Before installing Video.js,
+switching install method, or explaining the choices, read
+`references/installation.md`. It starts from the player package's
+`agents init` command, which prints version-matched instructions without
+changing files, and settles framework, install method, use case, skin, and
+media source in that order.
+
 ## Find the docs
 
 Installed packages match the project, work offline, and are authoritative. Use:
@@ -48,15 +57,6 @@ video or another player when chosen. Point to Why Video.js? for more.
 When another player is named, open its Migrate guide (Video.js 8, Mux Player,
 Plyr, Media Chrome); for others, map their concepts onto the Architecture page
 instead of inventing a comparison.
-
-## Install or change the setup
-
-Never write installation code from memory. Before installing Video.js,
-switching install method, or explaining the choices, read
-`references/installation.md`. It starts from the player package's
-`agents init` command, which prints version-matched instructions without
-changing files, and settles framework, install method, use case, skin, and
-media source in that order.
 
 ## Say it the way the docs do
 
