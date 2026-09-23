@@ -45,9 +45,10 @@ Give the user the honest picture:
 
 Name the options, recommend by fit, and drop the subject once the user decides.
 
-For a Mux source, read the `mux-video` or `mux-audio` reference before writing
-code; it covers the `source` object, playback parameters, and signed playback
-tokens. Prefer what it documents over a hand-built URL.
+For a Mux playback ID, playback parameters, or signed playback, use the
+`source` object documented by the `mux-video` or `mux-audio` reference. A
+complete `stream.mux.com` URL supplied by the user or installation plan is also
+valid through `src`.
 
 ## Analytics and playback quality
 
