@@ -15,8 +15,8 @@ decides whether any user or project data leaves the machine.
    keys, private playback IDs, internal hostnames, customer data, and
    proprietary code. Reproduce with the docs' demo media where possible. Ask
    before including any snippet from the user's own repository.
-4. **Ask a direct question.** "May I open this as an issue on videojs/v10, or
-   would you rather submit it yourself?" Proceed only on an explicit yes.
+4. **Ask a direct question.** "May I submit this to `<destination>`, or would
+   you rather submit it yourself?" Proceed only on an explicit yes.
    Silence, "sounds good", or approval of the draft's content is not consent
    to send.
 5. **Prefer handing the user the submit button.** A prefilled GitHub URL lets
@@ -80,9 +80,16 @@ type to repository automation:
 gh issue create --repo videojs/v10 --title "<title>" --body-file report.md
 ```
 
-`gh` cannot create discussions; use the prefilled link for those. The web form
-is still the better default: it keeps the template's structure and the user
-presses submit.
+For a discussion, recent `gh` versions can create one directly; check
+`gh discussion create --help` first and use the prefilled link if it is
+missing:
+
+```bash
+gh discussion create --repo videojs/v10 --category "<category>" --title "<title>" --body-file report.md
+```
+
+The web form is still the better default: it keeps the template's structure
+and the user presses submit.
 
 ## Report template
 

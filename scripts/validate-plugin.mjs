@@ -220,6 +220,7 @@ assertEqualArray(cursorEntry.tags, expectedTags, "Cursor plugin entry has drifte
 const skill = readFileSync(resolve(root, "skills/videojs/SKILL.md"), "utf8");
 assert(/^---\n[\s\S]*?^name:\s*videojs\s*$[\s\S]*?^---$/m.test(skill), "Skill frontmatter name is invalid");
 assert(Buffer.byteLength(skill, "utf8") < 10_000, "SKILL.md must stay under 10,000 bytes");
+assert(skill.trimEnd().split("\n").length < 200, "SKILL.md must stay under 200 lines");
 const normalizedSkill = skill.replace(/\s+/g, " ");
 assert(
   normalizedSkill.includes("an HTML `video` or `audio` element"),

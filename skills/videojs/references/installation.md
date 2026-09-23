@@ -24,15 +24,19 @@ monorepo: a bare command at the root may not see the app's installed package
 and then fetches the latest one instead.
 
 The bare command prints the exact flags, defaults, and compatibility rules for
-that version. It installs nothing and changes no files; installing is the first
-step of the plan it prints. After settling the choices below, run it again with
-them as flags to get one complete installation plan, and follow it. Also pass
+that version. It prints instructions and changes nothing. After settling the
+choices below, run it again with every settled choice as a flag, including
+`--framework vue` or `--framework svelte` for those apps, to get one complete
+installation plan. Follow the plan for implementation tasks; for
+explanation-only requests, summarize it. Also pass
 `--package-manager` to match the lockfile, since the plan otherwise uses npm,
 and for Shadcn pass `--template` and `--styling` to match the project. Add
 `--json` if structured output is easier to consume.
 
-If commands cannot run, open the matching Installation Guide from `llms.txt`
-as Markdown and use its documented query parameters instead.
+If commands cannot run, start from the live index at
+`https://videojs.org/docs/guides/installation.md`, open the matching
+Installation Guide, and use its documented query parameters. Bundled `.md`
+files are static; do not add query parameters to them.
 
 Detect what you can and settle the choices in this order.
 
