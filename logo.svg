@@ -1,14 +1,7 @@
-<svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="bands" x2="0" y2="1">
-      <stop offset=".25" stop-color="#fcb116" />
-      <stop offset=".25" stop-color="#f26222" />
-      <stop offset=".5" stop-color="#f26222" />
-      <stop offset=".5" stop-color="#ea3837" />
-      <stop offset=".75" stop-color="#ea3837" />
-      <stop offset=".75" stop-color="#a83b71" />
-    </linearGradient>
-  </defs>
-  <path fill="url(#bands)" d="M0 0h90v90H0z" />
+<svg width="90" height="90" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+  <path fill="#fcb116" d="M0 0h90v90H0z" />
+  <path fill="#f26222" d="M0 22.5h90V90H0z" />
+  <path fill="#ea3837" d="M0 45h90v45H0z" />
+  <path fill="#a83b71" d="M0 67.5h90V90H0z" />
   <path d="M71.954 45L28.046 73.125v-56.25L71.954 45z" fill="#ebe4c1" />
 </svg>
