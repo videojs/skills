@@ -61,8 +61,11 @@ the installed source toward their design. Bare UI components are the fallback
 when no skin is close. Ask them to commit first so every added or replaced
 file is reviewable.
 
-**Mux Data.** For Mux sources the plan adds Mux Data by default. Say so in the
-proposal and follow `references/hosting.md` before keeping it.
+**Extensions.** Pass extensions with `--extensions`; the command output lists
+the ones each player supports, such as Google Cast. For Mux sources the plan
+adds Mux Data by default. Say so in the proposal and follow
+`references/hosting.md` before keeping it; if the user declines, pass
+`--extensions none`, or list only the extensions they want.
 
 ## Propose once
 
@@ -107,7 +110,7 @@ complete combination. Use the deeper docs to verify or extend it:
    reference. Do not derive import paths from the use-case name.
 2. Media component and its playback adapter, from the component's reference
    page Import section.
-3. Extensions the user asked for, such as Google Cast, from their reference
-   pages.
+3. Extensions the user asked for that `--extensions` does not offer, from
+   their reference pages.
 4. Framework wiring from the Vue or Svelte guide: `isCustomElement` for Vue,
    static imports and mount-time access for Nuxt and SvelteKit.

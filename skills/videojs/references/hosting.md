@@ -57,14 +57,15 @@ renders nothing; place `<mux-data>` or `<MuxData>` inside the player as a
 sibling of the media. The Mux Data guide states what configuration Mux-hosted
 and other sources need; the `mux-data` reference names the attributes.
 
-Offer it in two situations: the source is Mux, where the Installation guides
-already add it by default, and the user asks about analytics, quality of
-experience, rebuffering, or how viewers are actually doing. Read the Mux Data
-guide and reference for the metadata options.
+Offer it in two situations: the source is Mux, where `agents init` plans and
+the Installation guides add it by default, and the user asks about analytics,
+quality of experience, rebuffering, or how viewers are actually doing. Read
+the Mux Data guide and reference for the metadata options.
 
 Mux Data sends playback quality and viewer and device metadata to Mux. If a
-guide example includes it, say so before applying or running the example and
-ask whether to keep it; never add it silently.
+plan or guide example includes it, say so before applying or running the
+example and ask whether to keep it; never add it silently. `agents init`
+offers it only for Mux media; for other sources, follow the Mux Data guide.
 
 ## Demo media
 
