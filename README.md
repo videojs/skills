@@ -4,13 +4,13 @@
 
 Official agent skills for building customizable, accessible video and audio players with [Video.js 10](https://videojs.org), an open-source library of composable, framework-native components for React and the web.
 
-The skill is deliberately thin. It teaches an agent how Video.js 10 is put together, how to get installation instructions and docs that match the installed version, and what to check before handing code back. The player packages print version-matched installation plans and ship their docs under `docs/`, so the agent can work locally and offline instead of relying on training data or a live fetch.
+The skill is deliberately thin. It teaches an agent how Video.js 10 is put together, how to get installation instructions and docs that match the installed version, and what to check before handing code back. The Video.js CLI prints version-matched installation plans, and the player packages ship their docs under `docs/`, so the agent can work locally and offline instead of relying on training data or a live fetch.
 
 You can [read SKILL.md on GitHub](https://github.com/videojs/skills/blob/main/skills/videojs/SKILL.md) or fetch its [raw Markdown](https://raw.githubusercontent.com/videojs/skills/main/skills/videojs/SKILL.md).
 
 ## Installing
 
-Choose one installation method. Using the plugin does not start an MCP server, register hooks, run scripts, or connect an account.
+Choose one installation method. Using the plugin does not start an MCP server, register hooks, run scripts, or connect an account. To print these steps in a terminal, run `npx @videojs/cli agents skills`.
 
 ### Codex
 
@@ -103,7 +103,7 @@ Video.js docs remain the source of truth for player structure, state, accessibil
 
 ## How the docs are found
 
-1. `npx @videojs/<html|react> agents init` for complete, version-matched installation instructions. Run it from the app directory that owns or will own the player package. From a pnpm workspace root, use `pnpm --dir <app> exec videojs-react agents init` or `pnpm --dir <app> exec videojs-html agents init`. The command only prints instructions.
+1. `npx @videojs/cli agents init` for complete, version-matched installation instructions. Run it from the app directory that owns or will own the player package. The command only prints instructions.
 2. `node_modules/@videojs/<html|react>/docs/llms.txt`, bundled with every release.
 3. [videojs.org](https://videojs.org/docs/framework/html/llms.txt) as Markdown for docs beyond installation when nothing is installed yet, or when commands cannot run, with pre-release pages on [main.videojs.org](https://main.videojs.org/llms.txt).
 

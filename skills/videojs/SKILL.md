@@ -28,10 +28,9 @@ before writing code or answering API questions.
 
 Never write installation code from memory. Before installing Video.js,
 switching install method, or explaining the choices, read
-`references/installation.md`. It starts from the player package's
-`agents init` command, which prints version-matched instructions without
-changing files, and settles framework, install method, use case, skin, and
-media source in that order.
+`references/installation.md`. It starts from `npx @videojs/cli agents init`,
+which prints version-matched instructions and the order to decide them in
+without changing files, and covers what the command cannot detect.
 
 ## Find the docs
 
