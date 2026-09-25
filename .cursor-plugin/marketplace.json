@@ -1,0 +1,40 @@
+{
+  "name": "videojs",
+  "owner": {
+    "name": "Video.js"
+  },
+  "metadata": {
+    "description": "Official Video.js agent plugins for building customizable, accessible video and audio players."
+  },
+  "plugins": [
+    {
+      "name": "videojs",
+      "source": "./",
+      "description": "Build customizable, accessible video and audio players with Video.js 10, an open-source library of composable, framework-native components for React and the web.",
+      "keywords": [
+        "videojs",
+        "video.js",
+        "video-player",
+        "audio-player",
+        "media-player",
+        "react",
+        "web-components",
+        "hls",
+        "live-streaming",
+        "captions",
+        "accessibility",
+        "shadcn",
+        "mux"
+      ],
+      "category": "Developer Tools",
+      "tags": [
+        "video",
+        "audio",
+        "streaming",
+        "accessibility",
+        "ui",
+        "frontend"
+      ]
+    }
+  ]
+}

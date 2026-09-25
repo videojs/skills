@@ -1,0 +1,28 @@
+{
+  "name": "videojs",
+  "version": "0.1.0",
+  "description": "Build customizable, accessible video and audio players with Video.js 10, an open-source library of composable, framework-native components for React and the web.",
+  "author": {
+    "name": "Video.js",
+    "url": "https://videojs.org"
+  },
+  "homepage": "https://videojs.org",
+  "repository": "https://github.com/videojs/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "videojs",
+    "video.js",
+    "video-player",
+    "audio-player",
+    "media-player",
+    "react",
+    "web-components",
+    "hls",
+    "live-streaming",
+    "captions",
+    "accessibility",
+    "shadcn",
+    "mux"
+  ],
+  "logo": "logo.svg"
+}

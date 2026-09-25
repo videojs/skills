@@ -1,0 +1,50 @@
+{
+  "name": "videojs",
+  "version": "0.1.0",
+  "description": "Build customizable, accessible video and audio players with Video.js 10, an open-source library of composable, framework-native components for React and the web.",
+  "author": {
+    "name": "Video.js",
+    "url": "https://videojs.org"
+  },
+  "homepage": "https://videojs.org",
+  "repository": "https://github.com/videojs/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "videojs",
+    "video.js",
+    "video-player",
+    "audio-player",
+    "media-player",
+    "react",
+    "web-components",
+    "hls",
+    "live-streaming",
+    "captions",
+    "accessibility",
+    "shadcn",
+    "mux"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Video.js",
+    "shortDescription": "Build accessible media players",
+    "longDescription": "Build customizable, accessible video and audio players with Video.js 10. Compose framework-native React components or HTML custom elements, start with packaged skins, or own the UI with custom controls. Support native, on-demand, live, audio, and background playback across HLS, DASH, DRM, and hosted media providers, with captions, quality selection, casting, analytics, and more.",
+    "developerName": "Video.js",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://videojs.org",
+    "defaultPrompt": [
+      "Add an HLS player with captions and a quality menu to this React app.",
+      "Build a Video.js 10 player for this Mux playback ID with Mux Data analytics.",
+      "Migrate this Video.js 8 player to Video.js 10 without changing its behavior.",
+      "Debug why this stream plays in Safari but fails in Chrome."
+    ],
+    "brandColor": "#F26222",
+    "composerIcon": "./logo.svg",
+    "logo": "./logo.svg",
+    "screenshots": []
+  }
+}

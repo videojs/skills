@@ -1,0 +1,84 @@
+name: Validate plugin
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Validate repository packaging
+        run: node scripts/validate-plugin.mjs
+
+      - name: Validate the portable Agent Plugins manifest
+        run: |
+          python -m pip install check-jsonschema==0.38.0
+          check-jsonschema \
+            --schemafile https://agent-plugins.org/schemas/1.0.0/plugin.schema.json \
+            plugin.json
+
+      - name: Validate Claude Code packaging
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin validate .
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin validate \
+            .claude-plugin/plugin.json
+
+      - name: Smoke-test Claude Code installation
+        env:
+          CLAUDE_CONFIG_DIR: ${{ runner.temp }}/claude
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin marketplace add ./
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin install \
+            videojs@videojs \
+            --scope user
+          npx --yes @anthropic-ai/claude-code@2.1.266 plugin list \
+            --json > "$RUNNER_TEMP/claude-plugins.json"
+          jq -e '.[] | select(.id == "videojs@videojs" and .enabled == true)' \
+            "$RUNNER_TEMP/claude-plugins.json" > /dev/null
+
+      - name: Discover the skill with skills.sh
+        run: npx --yes skills@1.7.0 add . --list
+
+      - name: Smoke-test Codex installation
+        run: |
+          # Replace the published URL source with this PR's checkout so the
+          # install test never falls through to the repository's main branch.
+          marketplace_root="$RUNNER_TEMP/videojs-marketplace"
+          install -d \
+            "$marketplace_root/.agents/plugins" \
+            "$marketplace_root/plugins"
+          cp -R "$GITHUB_WORKSPACE" "$marketplace_root/plugins/videojs"
+          jq '.plugins |= map(if .name == "videojs" then .source = {
+            "source": "local",
+            "path": "./plugins/videojs"
+          } else . end)' \
+            .agents/plugins/marketplace.json \
+            > "$marketplace_root/.agents/plugins/marketplace.json"
+          npx --yes @openai/codex@0.154.0 plugin marketplace add \
+            "$marketplace_root" \
+            --json
+          npx --yes @openai/codex@0.154.0 plugin add \
+            videojs@videojs \
+            --json
+          npx --yes @openai/codex@0.154.0 plugin list \
+            --marketplace videojs \
+            --json > "$RUNNER_TEMP/codex-plugins.json"
+          jq -e '.installed[] | select(.name == "videojs")' \
+            "$RUNNER_TEMP/codex-plugins.json" > /dev/null
