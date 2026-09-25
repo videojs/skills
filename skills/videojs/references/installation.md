@@ -42,24 +42,13 @@ before choosing `--project new`. A single page or embed can use CDN with
 For an app, ask which framework, and offer the framework's default app setup
 from the command output as the suggestion.
 
-**App setup.** The command detects the framework and package manager, but not
-the app setup. Read it from the project and pass the matching `--template`
-value from the command output:
-
-| Signals | App setup |
-| --- | --- |
-| `next` | Next.js |
-| `vite` with no meta-framework | Vite |
-| `@tanstack/react-start` | TanStack Start |
-| `react-router` with its framework config | React Router |
-| `astro` | Astro |
-| `artisan` or `laravel/framework` in `composer.json` | Laravel |
-| `nuxt` | Nuxt |
-| `@sveltejs/kit` | SvelteKit |
-| A plain HTML page with no bundler | No app setup (`none`) |
-
-Astro projects with React islands can take either the React or the HTML
-route; ask which the player will live in.
+**Detected values.** The command reads the framework, app setup, and package
+manager from the project and names the source of each under "Defaulted
+options". Check them against the project before confirming. When it reports
+that no app setup was detected, or the project is one the command does not
+read, choose the `--template` value yourself from the command output. Astro
+projects with React islands can take either the React or the HTML route; ask
+which the player will live in.
 
 **Existing Shadcn.** If `components.json` exists in the app directory (or the
 app workspace in a monorepo), the project already uses shadcn: lead with the
