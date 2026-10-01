@@ -73,8 +73,10 @@ instead of inventing a comparison.
   some media need, such as `@videojs/hlsjs-video`. **Extensions** add behavior
   with no UI, such as Mux Data or Google Cast.
 - **Preset** and **use case** are the same choice seen from two sides.
-- **Default** and **Minimal** skins have the same controls; Minimal is a flat,
-  bordered look, not a reduced control set.
+- **Skins** differ by features, styling, and browser reach: Default is the
+  distinct Video.js design, Neutral is easy to brand, and Compat trades
+  features for browser reach.
+  `references/installation.md` has the details and the next step for each.
 
 ## The mental model
 
