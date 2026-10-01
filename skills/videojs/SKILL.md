@@ -98,9 +98,12 @@ Every player has three parts plus optional extensions; names are examples.
 ## Watch for Video.js 8
 
 The `video.js` npm package is Video.js 8; Video.js 10 ships as `@videojs/*`.
-A `class="video-js"`, `data-setup`, or `videojs(...)` call means the project is
-on v8; confirm the user wants to migrate before rewriting, then follow the
-Migrate from Video.js 8 guide. Video.js 8 docs live at `legacy.videojs.org`.
+A `class="video-js"`, `data-setup`, or `videojs(...)` call means existing
+players use v8, not that new ones should. Build new players with Video.js 10
+and leave existing v8 players untouched. Rewrite one only when the user asks
+to migrate it: confirm first when you can ask, then follow the Migrate from
+Video.js 8 guide. When the project ends up running both versions, say so in
+your handoff. Video.js 8 docs live at `legacy.videojs.org`.
 
 ## Where to start, by task
 
@@ -129,9 +132,9 @@ Open these from `llms.txt` by title.
 - The skin stylesheet is imported once; TypeScript and bundler settings match
   the TypeScript and Bundlers guides.
 - Vue, Nuxt, Svelte, and SvelteKit wiring matches the framework guide.
-- Nothing from Video.js 8 leaked in: no `videojs()`, `class="video-js"`,
-  `data-setup`, or `registerPlugin`; no `controls` on the media element when a
-  skin or custom UI provides controls.
+- Nothing from Video.js 8 leaked into new players: no `videojs()`,
+  `class="video-js"`, `data-setup`, or `registerPlugin`; no `controls` on the
+  media element when a skin or custom UI provides controls.
 
 ## Send feedback upstream, with consent
 
