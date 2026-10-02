@@ -3,7 +3,7 @@ import { resolve } from "node:path";
 
 const root = process.cwd();
 const expectedName = "videojs";
-const expectedVersion = "0.1.0";
+const expectedVersion = "0.2.0";
 const expectedDescription =
   "Build customizable, accessible video and audio players with Video.js 10, an open-source library of composable, framework-native components for React and the web.";
 const expectedMarketplaceDescription =
