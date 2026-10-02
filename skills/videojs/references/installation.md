@@ -91,11 +91,19 @@ which methods each framework offers.
 - **CDN**: "Load the HTML player from jsDelivr with no package manager or build
   step." Plain HTML only; for static pages, CMS embeds, and prototypes.
 
-Presets are use cases: "Which kind of player is this?" Default and Minimal are
-two looks for the same player with the same controls. Default is the frosted
-look with translucent, blurred surfaces; Minimal is flat with visible borders,
-closer to a classic control bar. "Minimal" describes the aesthetic, not the
-number of controls.
+Presets are use cases: "Which kind of player is this?"
+
+Skins vary along three axes: features (minimal to feature complete), styling
+(unopinionated to opinionated), and how broadly the player must work across
+browsers. Ask about styling first: "Do you want to apply your brand to a
+finished design, or build your own from a foundation?" Building their own
+follows **Custom UI** above. The command output lists the skins each method
+and preset offer.
+
+- **Default**: feature complete; the opinionated, distinctly Video.js design.
+- **Neutral**: feature complete; an opinionated design that is easy to brand.
+- **Compat**: minimal features, unbranded, and built for broad browser
+  support; a polished step above native controls.
 
 If the user has no streaming source yet, asks where to host, or asks about
 analytics, read `references/hosting.md`.
@@ -114,3 +122,15 @@ complete combination. Use the deeper docs to verify or extend it:
    their reference pages.
 4. Framework wiring from the Vue or Svelte guide: `isCustomElement` for Vue,
    static imports and mount-time access for Nuxt and SvelteKit.
+
+## Next steps by skin
+
+End the handoff with the next step for the skin that was installed:
+
+- **Neutral**: "Set your brand tokens": `--media-accent-color` and its text
+  color, from Customize skins.
+- **Compat**: "Check the Browser support page against your targets."
+- **Default**: "You're done. Bump the Video.js version to get design updates."
+
+When the skin was added as skin source, say "You own this source now" instead
+of the Default line: version bumps no longer update it.
