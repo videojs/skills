@@ -53,9 +53,11 @@ appended to page URLs. By title:
   icons over bright, dark, and busy frames. Separate controls from the video
   with a scrim, gradient, translucent surface, or shadow; a hairline border
   alone disappears.
-- **Keep numbers steady.** Times, rates, and counts change while playing; set
-  tabular figures so digits keep their width and the layout never shifts.
-  Allow room for hours on long media and for live labels.
+- **Keep numbers steady.** Time displays always use
+  `font-variant-numeric: tabular-nums` (Tailwind `tabular-nums`), and so do
+  rates and counts that change while playing, so digits keep their width and
+  the layout never shifts. Allow room for hours on long media and for live
+  labels.
 - **Swap icon states in place.** Play and pause, volume levels, and enter or
   exit icons share one position and switch on the component's `data-*`
   attributes, crossfading rather than jumping. Keep one stroke weight and

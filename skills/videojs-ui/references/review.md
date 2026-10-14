@@ -37,8 +37,9 @@ media player. Check the states the change can affect, not every combination.
 - **Captions.** Captions stay readable and unobstructed when controls show.
 - **Targets.** At least 24 by 24 CSS pixels, larger on touch, without
   overlap.
-- **Steady layout.** Time displays and labels do not shift the controls as
-  values change or a language switches.
+- **Steady layout.** Every time display uses `tabular-nums`, and neither
+  times nor labels shift the controls as values change or a language
+  switches.
 
 Report each failure with the state that shows it, for example "volume slider
 thumb under 3:1 in portrait, over a bright frame at 0:42".

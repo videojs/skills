@@ -32,7 +32,8 @@ screenshots as you need, at the player's actual size and zoomed in on details.
   fullscreen. Repeat at a narrow width, and on a touch viewport if the user
   cares about mobile.
 - **Typography.** Font families and fallbacks, sizes, weights, letter spacing,
-  line height, and number styles in time displays.
+  and line height. Time displays always use `tabular-nums`, even where the
+  original's digits shift.
 - **Iconography.** Icon style (outline or filled), stroke weight, size,
   optical alignment, and how icons change between states.
 - **Spacing and layout.** Control sizes, gaps, padding, how the control bar
