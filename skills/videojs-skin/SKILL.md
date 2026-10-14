@@ -67,7 +67,8 @@ and correcting them later is the slowest path.
 
 - **Matching a reference**, such as a named product, an existing player,
   screenshots, or a design file: follow `references/match-reference.md`. It
-  collects the reference, writes `design/spec.md`, and confirms it.
+  saves reference crops, writes `design/spec.md` with measurements, and asks
+  the user only about what the reference can't show.
 - **An original design**: write a short `design/spec.md` from the user's
   brief covering layout and control order, menus, icon style, type, colors and
   surfaces, slider, and motion, and confirm it once.
@@ -109,9 +110,11 @@ tooltips and popups to their buttons unique and matched.
 ## 5. Verify
 
 1. Run the project's `typecheck` and `build` scripts.
-2. Compare the first working preview with `design/spec.md`, and with the
-   reference screenshots if there are any, before polishing. Check fidelity,
-   not only function.
+2. Check fidelity, not only function. When matching a reference, pass the
+   fidelity check in `references/match-reference.md` before calling the skin
+   done or asking the user to review it. Otherwise compare the first working
+   preview with `design/spec.md` before polishing. Fix the differences you
+   find yourself, and include screenshots in your report.
 3. Check the skin in the workbench in every state the change can affect: its
    options panel sets width, aspect ratio, color scheme, direction, language,
    and playback, and the project's `README.md` shows how to open a state

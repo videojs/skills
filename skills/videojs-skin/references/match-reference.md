@@ -29,66 +29,96 @@ results are the main source of corrections later.
    video often screenshots as a black frame; the controls still show, so
    capture them over it and judge contrast over real video separately.
 
-## 2. Capture every state
+## 2. Capture reference crops
 
-Take as many screenshots as you need, at the player's actual size and zoomed
-in on details: before playback, playing with controls shown, paused, idle with
-controls hidden, buffering, ended, hover and keyboard focus on each control,
-every menu and popover open, the time slider while hovering and dragging,
-volume, and fullscreen. Repeat at a narrow width, and on a touch viewport if
-the user cares about mobile. Step through transitions with several
-screenshots, or read their timings from the page's styles. Where the browser
-lets you inspect the page, read computed styles for exact values instead of
-estimating from pixels.
+Take screenshots at the player's actual size, and inspect computed styles for
+exact values where the browser allows. Save a crop of each state below in
+`design/reference/`, named after the state, such as `volume-expanded.png`:
 
-Save the screenshots in `design/reference/` at the project root, outside
-`src/`, so later sessions can compare against the same evidence.
+| Crop | Shows |
+| --- | --- |
+| `controls` | The control bar with controls shown, paused |
+| `idle` | Playing with controls hidden |
+| `volume-collapsed`, `volume-expanded` | Volume before and after it opens |
+| `menu`, `submenu` | The root settings menu, and one submenu |
+| `tooltip` | A control's tooltip, if the player has them |
+| `seek-preview` | The time slider while hovering, with its preview |
+| `focus` | One control with keyboard focus |
+| `narrow` | The control bar at a narrow width |
 
-## 3. Write the spec, then confirm it
+Add crops for anything else the user cares about, such as fullscreen, touch,
+or transitions stepped through frame by frame. If a state can't be captured,
+mark it **unknown** in the spec instead of inventing how it looks.
 
-Write `design/spec.md` before styling anything, and keep it short. Mark every
-item **observed** (seen in the reference), **requested** (the user asked for
-it), or **assumed** (neither; ask about these):
+## 3. Write the spec and measurements
 
-- **Layout.** Where controls sit (bottom bar, center, top), and their order
-  left to right in each group.
-- **Controls.** Which controls exist, which open menus, and how menus are
-  structured: one settings menu or separate menus for audio and subtitles,
-  speed, and quality.
-- **Icons.** The style (outline or filled, rounded or square), stroke weight
-  at display size, and how each icon changes between states.
-- **Typography.** Families, sizes, weights, and line height. Time displays
-  always use `tabular-nums`, even where the reference's digits shift.
-- **Surfaces and color.** Button backgrounds or none, menu surfaces, radii,
-  scrims, accent, and text colors.
-- **Slider.** Track height, fill and buffer colors, thumb shape and color,
-  and what the hover preview shows: time, chapter, thumbnail.
-- **Interaction and motion.** Hover and press feedback, tooltips or none,
-  how controls hide and show, how menus open, durations and easing.
+Write `design/spec.md` before styling anything, with two parts.
 
-Show the spec to the user and confirm it once before implementing. Build only
-what is observed or requested. Leave out anything the reference doesn't show,
-such as a title overlay, episode details, a "next episode" button, or center
-controls, unless the user asks for it.
+**Decisions**, one line each, covering layout and control order, which
+controls open which menus, icon style, typography, surfaces, the slider, and
+interaction and motion. Time displays always use `tabular-nums`.
+
+**Measurements**, as a table with the source of each value. The values
+below show the format only:
+
+| Item | Value | Source |
+| --- | --- | --- |
+| Player width, screenshot scale | 1280px at 2x | observed |
+| Button size | 48px | observed |
+| Control bar padding, radius | 8px, 12px | observed |
+| Icon size, stroke | 24px, 2px | observed |
+| … | | |
+
+Include at least button size, surface padding and radii, icon size and
+stroke, font families, sizes, and weights, menu widths, tooltip offset, and
+preview dimensions. Mark each source **observed** (measured from the
+reference), **assumed** (not visible), or **preference** (the user asked for
+it, including later corrections). Record relationships, not just values: if
+buttons share a size or radii are concentric (outer radius equals inner
+radius plus the padding between), say so.
+
+Build only what is observed or requested. Leave out anything the reference
+doesn't show, such as a title overlay, episode details, a "next episode"
+button, or center controls, unless the user asks for it. Ask the user only
+about **unknown** and **assumed** items that change the design, and only
+once; don't ask them to approve what you observed.
 
 ## 4. Build in passes
 
 1. Pick the starting skin whose controls are closest; Scaffold when the look
    is built from scratch.
-2. Choose one icon set before drawing any icon, matching the spec's style:
-   the skin's own set, a Video.js icon set, or one coherent set drawn in the
-   same grid and stroke. Never mix sets or improvise single paths.
-3. Put the spec's values into shared tokens: colors, menu surface, radii,
-   spacing, icon size and stroke, slider geometry, durations, and easing.
+2. Put the measurements into shared tokens, expressing relationships as
+   tokens too: one control size for every button, radii derived from the
+   inner radius and padding, one menu surface, one icon size and stroke.
+3. Choose the icon family before using it anywhere: the skin's own set, a
+   Video.js icon set, or one coherent set drawn on a single grid and stroke.
+   Review every icon and state variant together at actual size and enlarged,
+   checking silhouette against the reference, symmetry, clipping, and stroke
+   weight as rendered. Fix the family once rather than improvising single
+   paths later.
 4. Arrange controls and menus to the spec, then style controls from the
    tokens, then add states and motion.
-5. After the first working preview, before any polish, compare it with the
-   reference side by side in the same states and sizes: the paused player,
-   slider hover, the volume popup, every menu, and a narrow layout. List each
-   difference and fix it.
-6. After each pass, consolidate. Delete rules that a later rule overrides,
-   fold repeated values into tokens, and keep one rule per decision, so the
-   stylesheet reads as the spec rather than a history of corrections.
+5. After each pass, consolidate. Delete rules that a later rule overrides,
+   fold repeated values into tokens, and keep one rule per decision.
+
+## 5. Check fidelity before handing back
+
+This is your own check, not a request for the user. Don't call the skin done,
+or ask the user to review it, until it passes.
+
+1. Open the workbench at the reference's player width (the `width` URL
+   setting) and capture the same crops as `design/reference/`, at the same
+   scale, into `design/implementation/`.
+2. Compare each pair and write `design/fidelity.md`: one row per crop, each
+   visible difference in size, spacing, radius, icon shape, stroke, type,
+   color, or position, and its status.
+3. Fix every difference you can, recapture, and repeat until what remains is
+   deliberate, such as an accessibility rule, or unknown.
+4. When you correct something, recapture its neighbors too: collapsed and
+   expanded volume, hover and keyboard focus, menu and submenu, and the
+   narrow layout. Fixes in one state often break the next.
+5. Report with the evidence: the remaining differences with reasons, and the
+   crop pairs, alongside the build and interaction checks.
 
 ## Rules that still apply
 
@@ -99,8 +129,7 @@ controls, unless the user asks for it.
   markup or scripts.
 - Keep the Video.js accessibility rules where the reference breaks them, such
   as low-contrast controls, missing focus indicators, or controls with no
-  accessible name. Record each deliberate difference in the spec and tell the
-  user.
+  accessible name. Record each deliberate difference in `design/fidelity.md`.
 
 ## Example
 

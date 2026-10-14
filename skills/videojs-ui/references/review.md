@@ -12,7 +12,9 @@ same states and sizes, especially paused, slider hover, the volume popup,
 every menu, and a narrow layout. Check control order, icon shapes and stroke
 weight, type, surfaces and radii, slider details, and hover and press
 feedback. List each difference, and flag anything present that the reference
-and the user don't account for.
+and the user don't account for. Fix what you can yourself before asking the
+user to look, and report with the screenshots as evidence, alongside the
+build and interaction checks.
 
 ## States
 
