@@ -96,6 +96,24 @@ In Claude Code, you can invoke the skills explicitly with `/videojs:videojs`, `/
 
 With your permission, the skill can also draft bug reports, docs feedback, and friction logs for [videojs/v10](https://github.com/videojs/v10). It shows you the exact text first, and nothing is sent unless you say so.
 
+### Design your own skin
+
+Build a Video.js skin from a starting point, preview it in a local workbench across player sizes, languages, and playback settings, and publish the workbench to share. Nothing needs cloning; choose how you want to work.
+
+**With your agent.** Install the skills using any method above, then ask, for example:
+
+> Help me design my own Video.js skin for our podcast player.
+
+The `videojs-skin` skill asks which framework, styling, starting skin, and player type you want, runs the CLI to create the project and start the workbench, then works on the skin with you. It publishes the workbench to Vercel, Netlify, or Cloudflare Pages only when you ask, and you sign in to the host yourself.
+
+**From the command line.** Run the same command the skill uses and answer its questions:
+
+```sh
+npx @videojs/cli skin create
+```
+
+The project's `README.md` explains the workbench and publishing, and its `AGENTS.md` points any agent you bring in later at the `videojs-skin` skill.
+
 ### Companion skills for player UI
 
 The `videojs-skin` and `videojs-ui` skills pair with these optional skills from other authors, and suggest them when they would help:
