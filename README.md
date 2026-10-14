@@ -84,20 +84,24 @@ Ask your agent, for example:
 
 > Migrate this Video.js 8 embed to Video.js 10 in React.
 
-In Claude Code, you can invoke the skill explicitly with `/videojs:videojs`.
+> Design a Video.js skin for our podcast player that matches our brand.
+
+In Claude Code, you can invoke the skills explicitly with `/videojs:videojs` and `/videojs:videojs-skin`.
 
 | Skill | Purpose |
 | --- | --- |
 | [videojs](skills/videojs/SKILL.md) | Build customizable, accessible Video.js 10 video and audio players; choose the framework, install method, use case, skin, and media source; locate version-matched bundled docs; verify imports and playback setup |
+| [videojs-skin](skills/videojs-skin/SKILL.md) | Design your own Video.js skin: set up a standalone project and preview workbench with `npx @videojs/cli skin create`, build the skin's look, layout, and motion within the player's accessibility and structure rules, review it across sizes, languages, and playback states, and publish the workbench |
 
 With your permission, the skill can also draft bug reports, docs feedback, and friction logs for [videojs/v10](https://github.com/videojs/v10). It shows you the exact text first, and nothing is sent unless you say so.
 
 ### Companion skills for custom skins
 
-These optional skills pair well with the Shadcn installation when you are editing a Video.js skin's source:
+The `videojs-skin` skill pairs with these optional skills from other authors, and suggests them when they would help:
 
-- [shadcn/ui's official skill](https://ui.shadcn.com/docs/skills) for project configuration, registry commands, and theming.
 - [Emil Kowalski's skills](https://github.com/emilkowalski/skills), especially `emil-design-eng`, `animate`, and `review-animations`, for control-bar polish and motion.
+- [shadcn/ui's official skill](https://ui.shadcn.com/docs/skills) for theming conventions, and registry commands when the skin moves into an app that uses shadcn.
+- An audit skill for a final pass, such as `web-design-guidelines` from [Vercel's agent skills](https://github.com/vercel-labs/agent-skills) or `accessibility` from [Addy Osmani's web quality skills](https://github.com/addyosmani/web-quality-skills).
 
 Video.js docs remain the source of truth for player structure, state, accessibility, and Video.js registry commands.
 
