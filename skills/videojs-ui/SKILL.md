@@ -62,11 +62,11 @@ appended to page URLs. By title:
   rates and counts that change while playing, so digits keep their width and
   the layout never shifts. Allow room for hours on long media and for live
   labels.
-- **Use one icon set.** Choose it before drawing any icon and keep every
-  control and menu in it: one style, grid, and corner treatment. Compare
-  silhouettes at their actual display size, and match the rendered stroke
-  weight across icons, since a path scaled to a different size changes it.
-  Never mix sets or improvise single paths.
+- **Icons are one set, drawn at the size they render.** Choose the source
+  once: the reference's own SVGs when replicating them, an existing set, or
+  a new set with one grid, stroke, radius, and style. Never mix sets, and
+  never scale an icon to a size it wasn't drawn for, such as a 24px icon
+  shown at 18px. Read `references/icons.md` before adding or changing icons.
 - **Swap icon states in place.** Play and pause, volume levels, and enter or
   exit icons share one position and switch on the component's `data-*`
   attributes, crossfading rather than jumping. Keep one stroke weight and

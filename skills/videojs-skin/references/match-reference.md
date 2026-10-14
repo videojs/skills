@@ -46,6 +46,9 @@ exact values where the browser allows. Save a crop of each state below in
 | `focus` | One control with keyboard focus |
 | `narrow` | The control bar at a narrow width |
 
+When the user wants the icons replicated, also save each icon's SVG markup
+from the page, per state, in `design/reference/icons/`.
+
 Add crops for anything else the user cares about, such as fullscreen, touch,
 or transitions stepped through frame by frame. If a state can't be captured,
 mark it **unknown** in the spec instead of inventing how it looks.
@@ -90,12 +93,11 @@ once; don't ask them to approve what you observed.
 2. Put the measurements into shared tokens, expressing relationships as
    tokens too: one control size for every button, radii derived from the
    inner radius and padding, one menu surface, one icon size and stroke.
-3. Choose the icon family before using it anywhere: the skin's own set, a
-   Video.js icon set, or one coherent set drawn on a single grid and stroke.
-   Review every icon and state variant together at actual size and enlarged,
-   checking silhouette against the reference, symmetry, clipping, and stroke
-   weight as rendered. Fix the family once rather than improvising single
-   paths later.
+3. Settle the icons before using them anywhere, following the `videojs-ui`
+   skill's icon guidance: when replicating the reference's icons, use its
+   SVGs from `design/reference/icons/` as the source; otherwise use or draw
+   one consistent set. Draw them at the size they render, and review the whole
+   set at actual size and enlarged before applying it.
 4. Arrange controls and menus to the spec, then style controls from the
    tokens, then add states and motion.
 5. After each pass, consolidate. Delete rules that a later rule overrides,
@@ -122,9 +124,10 @@ or ask the user to review it, until it passes.
 
 ## Rules that still apply
 
-- Recreate the look; don't copy the original's assets. Draw icons rather
-  than lifting icon files, use a font only if its license allows it on the
-  user's site, and leave out logos and brand marks unless the user owns them.
+- Copy the reference's icon SVGs only when the user asks to replicate the
+  icons, and tell them if the icons belong to another company before they
+  publish. Use a font only if its license allows it on the user's site, and
+  leave out logos and brand marks unless the user owns them.
 - Match behavior through Video.js components, not by porting the original's
   markup or scripts.
 - Keep the Video.js accessibility rules where the reference breaks them, such
