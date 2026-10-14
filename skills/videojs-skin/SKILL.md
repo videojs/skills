@@ -36,8 +36,8 @@ Skip this when the working directory already has a `skin.json`.
    styling) or brand a finished design (Neutral is easy to brand, Default is
    the distinct Video.js design, Compat trades features for browser reach).
    The preset is the kind of player: video, audio, live video, or live audio.
-   If they want to replicate a specific player, read
-   `references/replicate.md` first; what you capture decides the starting
+   If the skin should match an existing player or design, read
+   `references/match-reference.md` first; the reference decides the starting
    skin.
 3. Run the command again with every choice as a flag. It installs
    dependencies and prints the commands to start the workbench. Start the
@@ -60,7 +60,22 @@ page URLs. Start with these pages, by title:
 | Labels, languages, right-to-left | Internationalization |
 | What the components already do for accessibility | Accessibility |
 
-## 3. Design and build
+## 3. Agree the design
+
+Agree what the skin should look like before styling it; improvising details
+and correcting them later is the slowest path.
+
+- **Matching a reference**, such as a named product, an existing player,
+  screenshots, or a design file: follow `references/match-reference.md`. It
+  collects the reference, writes `design/spec.md`, and confirms it.
+- **An original design**: write a short `design/spec.md` from the user's
+  brief covering layout and control order, menus, icon style, type, colors and
+  surfaces, slider, and motion, and confirm it once.
+
+Either way, build only what the spec and the user ask for. Don't add
+controls, overlays, or text that neither mentions.
+
+## 4. Build
 
 The `videojs-ui` skill covers the craft of each control: contrast over video,
 icon states, motion, type, color, labels, and the companion design and audit
@@ -71,6 +86,9 @@ skills to pair with it. A skin project adds these rules:
 - **Change tokens before rules.** Colors, surfaces, radii, sizes, and motion
   are CSS custom properties in the skin's theme files. Keep the public
   properties packaged skins expose, such as `--media-accent-color`, working.
+- **Consolidate after each pass.** Delete rules a later rule overrides, and
+  keep shared tokens for values used in more than one place, such as the menu
+  surface, icon size and stroke, spacing, and slider geometry.
 - **Style state with `data-*` attributes** that components set, such as
   `data-paused`, not classes toggled in script.
 - **Size with container queries.** The player is rarely the viewport's width.
@@ -88,16 +106,19 @@ the `props` a `render` function receives; in HTML, import every element part
 you render and keep the `id`, `trigger`, and `commandfor` pairs that wire
 tooltips and popups to their buttons unique and matched.
 
-## 4. Verify
+## 5. Verify
 
 1. Run the project's `typecheck` and `build` scripts.
-2. Check the skin in the workbench in every state the change can affect: its
+2. Compare the first working preview with `design/spec.md`, and with the
+   reference screenshots if there are any, before polishing. Check fidelity,
+   not only function.
+3. Check the skin in the workbench in every state the change can affect: its
    options panel sets width, aspect ratio, color scheme, direction, language,
    and playback, and the project's `README.md` shows how to open a state
    from the URL. Use `videojs-ui`'s review for what to look for; it covers
    what generic UI audits miss on a video player.
 
-## 5. Publish, when asked
+## 6. Publish, when asked
 
 The project's `deploy` script publishes the workbench to Vercel, Netlify, or
 Cloudflare Pages. It creates a public URL and signs in to the host, so run it

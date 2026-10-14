@@ -4,6 +4,16 @@ Read this before handing back a change to player UI. Run the companion audit
 skill first if one is installed, then check what a generic audit misses on a
 media player. Check the states the change can affect, not every combination.
 
+## Visual fidelity
+
+When there's a reference or a design spec, compare the UI against it before
+polishing, and again before handing back. Put screenshots side by side in the
+same states and sizes, especially paused, slider hover, the volume popup,
+every menu, and a narrow layout. Check control order, icon shapes and stroke
+weight, type, surfaces and radii, slider details, and hover and press
+feedback. List each difference, and flag anything present that the reference
+and the user don't account for.
+
 ## States
 
 - **Playback.** Before playback with the poster, playing, paused, buffering,

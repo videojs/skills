@@ -38,14 +38,18 @@ appended to page URLs. By title:
 
 ## Workflow
 
-1. Start from a Video.js component, or render your element through one, so
+1. Know what you're building before styling it. When there's a reference or a
+   design spec, build to it and add nothing it doesn't show or the user
+   didn't ask for. When there isn't, describe the intended look in a few
+   lines and confirm it before building more than one control.
+2. Start from a Video.js component, or render your element through one, so
    it keeps its role, translated label, state attributes, and keyboard
    support. Build from scratch only what the library lacks, following Build
    your own UI component.
-2. Apply the rules below while building.
-3. Polish with the companion skills in `references/companions.md`, when they
+3. Apply the rules below while building.
+4. Polish with the companion skills in `references/companions.md`, when they
    are installed or the user agrees to add them.
-4. Review with `references/review.md` before handing back.
+5. Review with `references/review.md` before handing back.
 
 ## Rules for UI over video
 
@@ -58,6 +62,11 @@ appended to page URLs. By title:
   rates and counts that change while playing, so digits keep their width and
   the layout never shifts. Allow room for hours on long media and for live
   labels.
+- **Use one icon set.** Choose it before drawing any icon and keep every
+  control and menu in it: one style, grid, and corner treatment. Compare
+  silhouettes at their actual display size, and match the rendered stroke
+  weight across icons, since a path scaled to a different size changes it.
+  Never mix sets or improvise single paths.
 - **Swap icon states in place.** Play and pause, volume levels, and enter or
   exit icons share one position and switch on the component's `data-*`
   attributes, crossfading rather than jumping. Keep one stroke weight and
