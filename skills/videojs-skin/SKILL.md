@@ -58,10 +58,9 @@ page URLs. Start with these pages, by title:
 
 ## 3. Design and build
 
-Pair this skill with design skills when they are installed, and suggest them
-once if they are not; `references/companions.md` says which skill fits which
-step and how to install it. Video.js constraints win over generic design
-advice:
+The `videojs-ui` skill covers the craft of each control: contrast over video,
+icon states, motion, type, color, labels, and the companion design and audit
+skills to pair with it. A skin project adds these rules:
 
 - **Edit the skin, not the workbench.** All skin code lives in `src/` and
   imports nothing from `apps/preview/`, so it can move into an app as is.
@@ -73,8 +72,8 @@ advice:
 - **Size with container queries.** The player is rarely the viewport's width.
 - **Keep the container's `data-theme` and `data-preset`.** The styles select
   on them.
-- **Animate through the motion tokens** the preferences stylesheet collapses
-  under reduced motion, and only `transform`, `opacity`, and `filter`.
+- **Add motion through the skin's motion tokens**, which its preferences
+  stylesheet collapses under reduced motion.
 - **Keep what the skin provides beyond looks**: the error dialog, hotkeys,
   gestures, and status announcer. Replace them only with equivalents.
 - **Reorder controls in source, not with CSS.** Focus order must match the
@@ -88,9 +87,11 @@ tooltips and popups to their buttons unique and matched.
 ## 4. Verify
 
 1. Run the project's `typecheck` and `build` scripts.
-2. Check the skin in the workbench in every state the change can affect, then
-   run the final review in `references/review.md`. It covers what generic UI
-   audits miss on a video player.
+2. Check the skin in the workbench in every state the change can affect: its
+   options panel sets width, aspect ratio, color scheme, direction, language,
+   and playback, and the project's `README.md` shows how to open a state
+   from the URL. Use `videojs-ui`'s review for what to look for; it covers
+   what generic UI audits miss on a video player.
 
 ## 5. Publish, when asked
 

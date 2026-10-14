@@ -176,7 +176,7 @@ assert(
   "Skill body must name literal video and audio elements",
 );
 
-for (const name of ["videojs", "videojs-skin"]) {
+for (const name of ["videojs", "videojs-skin", "videojs-ui"]) {
   const path = `skills/${name}/SKILL.md`;
   assert(existsSync(resolve(root, path)), `Missing ${path}`);
   assert(existsSync(resolve(root, `skills/${name}/LICENSE`)), `Missing skills/${name}/LICENSE`);
