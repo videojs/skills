@@ -4,10 +4,11 @@ license: Apache-2.0
 description: >
   Use when someone wants to design their own Video.js player skin: a custom
   look, layout, or set of controls for a Video.js 10 video or audio player,
-  built and previewed in a standalone workbench and published to share. Sets
-  up the project with `npx @videojs/cli skin create`, then guides the design,
-  motion, and accessibility work on the skin source. Also use in any project
-  with a `skin.json` from `videojs skin create`.
+  including one that replicates another player's look, such as YouTube's or
+  Netflix's, built and previewed in a standalone workbench and published to
+  share. Sets up the project with `npx @videojs/cli skin create`, then guides
+  the design, motion, and accessibility work on the skin source. Also use in
+  any project with a `skin.json` from `videojs skin create`.
 ---
 
 # Design a Video.js skin
@@ -35,6 +36,9 @@ Skip this when the working directory already has a `skin.json`.
    styling) or brand a finished design (Neutral is easy to brand, Default is
    the distinct Video.js design, Compat trades features for browser reach).
    The preset is the kind of player: video, audio, live video, or live audio.
+   If they want to replicate a specific player, read
+   `references/replicate.md` first; what you capture decides the starting
+   skin.
 3. Run the command again with every choice as a flag. It installs
    dependencies and prints the commands to start the workbench. Start the
    dev server in the background and share the workbench URL it prints.
