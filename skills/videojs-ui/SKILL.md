@@ -89,10 +89,19 @@ appended to page URLs. By title:
 - **Color by purpose.** Use semantic tokens such as the accent and controls
   surface, keep the accent for the brand, and keep video controls dark in
   both color schemes unless the design proves otherwise.
-- **Labels are translated and specific.** Built-in controls ship translated
-  labels; custom ones need translations too, sentence case, and text that
-  says what happens. Leave room for longer languages and mirror the layout
-  for right-to-left.
+- **Never hardcode UI copy.** Visible text, tooltips, and accessible names
+  come from Video.js i18n: built-in controls ship translated labels, and new
+  strings go through Video.js translations (Internationalization). Keep them
+  sentence case and say what happens. Leave room for longer languages and
+  mirror the layout for right-to-left.
+- **Keep tooltips and focus consistent.** When the player has tooltips, every
+  one uses the same offset from its control and the same style, including at
+  the player's edges. Every
+  focusable part, buttons, slider thumbs, and menu items, shows the same
+  visible focus ring, styled from the skin's tokens.
+- **Default to system fonts.** Set `--media-font-family` to a system font
+  stack unless the user has a web font licensed for their site, and tell the
+  user when you choose system fonts over a reference's web font.
 - **State is never color alone.** Pair it with an icon change, a label, or
   shape, and keep custom state announced in a live region when the status
   announcer does not cover it.

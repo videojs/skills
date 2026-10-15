@@ -41,9 +41,9 @@ exact values where the browser allows. Save a crop of each state below in
 | `idle` | Playing with controls hidden |
 | `volume-collapsed`, `volume-expanded` | Volume before and after it opens |
 | `menu`, `submenu` | The root settings menu, and one submenu |
-| `tooltip` | A control's tooltip, if the player has them |
+| `tooltip` | Tooltips on a control in the bar and one at its edge, if the player has them |
 | `seek-preview` | The time slider while hovering, with its preview |
-| `focus` | One control with keyboard focus |
+| `focus` | Keyboard focus on a button, the slider, and a menu item |
 | `narrow` | The control bar at a narrow width |
 
 When the user wants the icons replicated, also save each icon's SVG markup
@@ -61,6 +61,11 @@ Write `design/spec.md` before styling anything, with two parts.
 controls open which menus, icon style, typography, surfaces, the slider, and
 interaction and motion. Time displays always use `tabular-nums`.
 
+For fonts, default to the system font stack, set through
+`--media-font-family`, when the reference uses a web font, and tell the user:
+the font may not be licensed for their site, and it costs a download. Record
+the reference's font so they can switch to it if they have the rights.
+
 **Measurements**, as a table with the source of each value. The values
 below show the format only:
 
@@ -73,10 +78,11 @@ below show the format only:
 | … | | |
 
 Include at least button size, surface padding and radii, icon size and
-stroke, font families, sizes, and weights, menu widths, tooltip offset, and
-preview dimensions. Mark each source **observed** (measured from the
-reference), **assumed** (not visible), or **preference** (the user asked for
-it, including later corrections). Record relationships, not just values: if
+stroke, font families, sizes, and weights, menu widths, tooltip offset, focus
+ring width, color, and offset, and preview dimensions. Mark each source
+**observed** (measured from the reference), **assumed** (not visible),
+**preference** (the user asked for it, including later corrections), or
+**derived** (not in the reference, styled from it; see below). Record relationships, not just values: if
 buttons share a size or radii are concentric (outer radius equals inner
 radius plus the padding between), say so.
 
@@ -85,6 +91,17 @@ doesn't show, such as a title overlay, episode details, a "next episode"
 button, or center controls, unless the user asks for it. Ask the user only
 about **unknown** and **assumed** items that change the design, and only
 once; don't ask them to approve what you observed.
+
+Some parts the skin needs may not appear in the reference: focus rings, the
+error dialog, a captions or settings menu, or states such as buffering. Keep them, and style them from the reference's tokens so they look
+like part of the same player: its surfaces, radii, type, icon set, and
+spacing. Mark them **derived**, and list them for the user when you hand back
+as needing extra attention, since nothing in the reference confirms them.
+
+All UI copy comes from Video.js's translated labels, not from the
+reference's wording. Don't hardcode text to match it; when the reference says
+something the built-in labels don't, add the string through Video.js
+translations.
 
 ## 4. Build in passes
 
@@ -119,15 +136,21 @@ or ask the user to review it, until it passes.
 4. When you correct something, recapture its neighbors too: collapsed and
    expanded volume, hover and keyboard focus, menu and submenu, and the
    narrow layout. Fixes in one state often break the next.
-5. Report with the evidence: the remaining differences with reasons, and the
-   crop pairs, alongside the build and interaction checks.
+5. Always check focus rings and tooltips. Focus rings are required even when
+   the reference shows none: visible and consistent on buttons, the slider,
+   and menu items. Tooltips follow the reference; when the skin has them,
+   every tooltip sits at the same offset from its control and in the same
+   style, including at the player's edges.
+6. Report with the evidence: the remaining differences with reasons, the
+   **derived** parts that need the user's attention, a note if the font stack
+   differs from the reference, and the crop pairs, alongside the build and
+   interaction checks.
 
 ## Rules that still apply
 
 - Copy the reference's icon SVGs only when the user asks to replicate the
   icons, and tell them if the icons belong to another company before they
-  publish. Use a font only if its license allows it on the user's site, and
-  leave out logos and brand marks unless the user owns them.
+  publish. Leave out logos and brand marks unless the user owns them.
 - Match behavior through Video.js components, not by porting the original's
   markup or scripts.
 - Keep the Video.js accessibility rules where the reference breaks them, such

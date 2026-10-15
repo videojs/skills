@@ -49,6 +49,11 @@ build and interaction checks.
 - **Captions.** Captions stay readable and unobstructed when controls show.
 - **Targets.** At least 24 by 24 CSS pixels, larger on touch, without
   overlap.
+- **Focus and tooltips.** The focus ring is visible and identical on
+  buttons, slider thumbs, and menu items. Any tooltips share one offset and
+  style, and stay inside the player at its edges.
+- **Copy.** No hardcoded text: switch the language and every label, tooltip,
+  and accessible name changes.
 - **Steady layout.** Every time display uses `tabular-nums`, and neither
   times nor labels shift the controls as values change or a language
   switches.
