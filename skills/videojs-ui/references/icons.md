@@ -11,7 +11,8 @@ Decide once for the whole player, before using any icon:
 - **Replicating a reference's icons**: use the reference's own SVGs as the
   source. Copy the markup from the page with the browser's inspector, or from
   the user's design files, into `design/reference/icons/`, one file per icon
-  and state, and keep each path as it is. Note where they came from in the
+  and state, keeping each path and `viewBox` as they are, and record the size
+  the reference renders them at. Note where they came from in the
   spec. If the icons belong to another company, tell the user before they
   publish the skin: a private build or study is one thing, a public release
   may need permission. Some players use openly licensed sets, so check the
@@ -40,17 +41,24 @@ Every icon should look like it came from the same hand:
 
 ## Render at 100%
 
-Draw each icon at the size it's displayed. An icon drawn on a 24px grid and
-shown at 18px scales every stroke and edge to fractional pixels, which blurs
-and thickens it. If the player shows icons at 18px, draw them on an 18px
-grid, or use a set made for that size.
+Aim to show every icon at the size it was drawn for. An icon drawn on a 24px
+grid and shown at 18px scales every stroke and edge to fractional pixels,
+which blurs and thickens it.
 
-- Make the SVG's `viewBox` match its rendered CSS size, such as
-  `viewBox="0 0 18 18"` shown at `18px`.
-- Snap straight edges to whole pixels, and center odd-width strokes on half
-  pixels so they render crisp.
-- When controls change size, such as in fullscreen, use a size the set was
-  drawn for rather than scaling one in between.
+- **New icons:** draw them on a grid the size they're displayed at, with a
+  `viewBox` to match, such as `viewBox="0 0 18 18"` shown at `18px`. Snap
+  straight edges to whole pixels, and center odd-width strokes on half pixels
+  so they render crisp.
+- **Copied or existing icons:** keep their `viewBox` and paths, and show them
+  at the size they were drawn for, which for a reference is the size it
+  renders them at. Never change a `viewBox` on its own to resize an icon;
+  that crops or shifts it.
+- **When an icon must show at another size:** scaling through the `viewBox`
+  is valid SVG. Inspect the result at its rendered size, and redraw the icon
+  on the new grid only where you can see blurred edges or a stroke weight
+  that no longer matches the set.
+- When controls change size, such as in fullscreen, prefer a size the set was
+  drawn for over scaling one in between.
 - Keep the rendered stroke weight equal across icons; a scaled icon's stroke
   scales with it.
 

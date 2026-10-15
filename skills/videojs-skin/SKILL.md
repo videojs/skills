@@ -29,7 +29,11 @@ Skip this when the working directory already has a `skin.json`.
 1. Run `npx @videojs/cli skin create <directory> --name <name>`. Without a
    terminal it changes nothing and lists the choices left to make, with their
    defaults; `--help` explains them. If `skin create` is not recognized, the
-   CLI predates it: use the `videojs` skill's Shadcn method instead.
+   CLI predates it. Hand off: add the skin source to an app with the `videojs`
+   skill's Shadcn method, and tell the user there's no standalone workbench.
+   That route creates no `skin.json`, `apps/preview/`, or `deploy` script, so
+   skip this skill's workbench and publishing steps; the design guidance in
+   steps 3 and 4 and the `videojs-ui` skill still apply, checked in the app.
 2. Propose every choice in one message and confirm once. Framework is React
    or HTML. For the starting skin, ask whether they want to build their own
    design from a foundation (Scaffold, every control wired up with minimal

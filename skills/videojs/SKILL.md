@@ -115,6 +115,8 @@ Open these from `llms.txt` by title.
 | Streaming (HLS, DASH, live, DRM) | Media sources, Play live streams, then the media component's reference |
 | Change colors or sizing | Customize skins, "Style a packaged skin" |
 | Change controls, layout, or interactions | `references/installation.md` for the Shadcn method, then Customize skins, "Style skin source" |
+| Design a skin in its own project, or match another player's look | The `videojs-skin` skill |
+| Style, polish, or review player controls | The `videojs-ui` skill |
 | Custom control or state-driven UI | Build your own UI component, Features, then `PlayerController` or `usePlayer` |
 | Captions, thumbnails, quality, PiP, casting, hotkeys, autoplay, errors, analytics | The matching Playback guide, then the component references it links |
 | Build or type errors | Bundlers, TypeScript, Content Security Policy |

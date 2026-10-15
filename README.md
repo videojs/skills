@@ -56,7 +56,7 @@ Select your agent when prompted. Installation is project-local by default; add `
 
 ### Manual
 
-Clone this repository and copy `skills/videojs` into the appropriate skill directory:
+Clone this repository and copy each folder in `skills/` (`videojs`, `videojs-skin`, and `videojs-ui`) into the appropriate skill directory:
 
 | Agent | Skill directory |
 | --- | --- |
