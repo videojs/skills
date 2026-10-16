@@ -82,6 +82,18 @@ and correcting them later is the slowest path.
 Either way, build only what the spec and the user ask for. Don't add
 controls, overlays, or text that neither mentions.
 
+Never invent design direction. Before building, and whenever a new question
+comes up mid-build, sort it:
+
+- **Direction: ask.** Anything that changes the design's intent and can't be
+  found in the brief, the reference, or the project, such as brand colors,
+  mood, density, which controls to include, or layout style. Batch these
+  into one message with two or three concrete options and a recommended
+  default for each, and wait for the answer.
+- **Execution: decide.** Details that follow from what's agreed, such as a
+  hover shade derived from the accent or the gap between two buttons. Decide
+  these yourself and mark them **derived** in the spec rather than asking.
+
 ## 4. Build
 
 The `videojs-ui` skill covers the craft of each control: contrast over video,
