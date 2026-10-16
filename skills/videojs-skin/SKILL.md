@@ -72,7 +72,9 @@ and correcting them later is the slowest path.
 - **Matching a reference**, such as a named product, an existing player,
   screenshots, or a design file: follow `references/match-reference.md`. It
   saves reference crops, writes `design/spec.md` with measurements, and asks
-  the user only about what the reference can't show.
+  the user only about what the reference can't show. Matching a player
+  includes its control icons: extract and use the reference's SVGs unless
+  that's impossible or restricted.
 - **An original design**: write a short `design/spec.md` from the user's
   brief covering layout and control order, menus, icon style, type, colors and
   surfaces, slider, and motion, and confirm it once.

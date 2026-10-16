@@ -8,18 +8,47 @@ blurry icons are the first thing people notice.
 
 Decide once for the whole player, before using any icon:
 
-- **Replicating a reference's icons**: use the reference's own SVGs as the
-  source. Copy the markup from the page with the browser's inspector, or from
-  the user's design files, into `design/reference/icons/`, one file per icon
-  and state, keeping each path and `viewBox` as they are, and record the size
-  the reference renders them at. Note where they came from in the
-  spec. If the icons belong to another company, tell the user before they
-  publish the skin: a private build or study is one thing, a public release
-  may need permission. Some players use openly licensed sets, so check the
-  license where the set is identifiable.
+- **Matching a reference player**: use its own control icons. A request to
+  look like, match, or replicate a player includes them; don't wait to be
+  asked. See "Extract a reference's icons" below.
 - **The skin's own set, or another Video.js icon set**: use it as is, and
   draw any missing icon to match it.
 - **A new set**: draw every icon to the rules below.
+
+When matching a reference, substitute another source only when an icon can't
+be extracted (it's an icon font, an image, or drawn in canvas), its reuse is
+restricted, or the user asks for a different set. Record the concrete reason
+per icon in the spec. Matching the starting skin, or saving time, is not a
+reason.
+
+## Extract a reference's icons
+
+1. In the browser your agent controls, inspect each control in every state:
+   play and pause, mute, unmute, and volume levels, fullscreen enter and exit,
+   captions on and off, picture-in-picture, and the settings and menu icons.
+2. Copy each `<svg>` as it renders. When it draws from a sprite through
+   `<use href="#id">` or an external `sprite.svg#id`, resolve the reference
+   and copy the `<symbol>` it points to, with that symbol's `viewBox`.
+3. Keep the `viewBox`, paths, fills, strokes, `fill-rule`, stroke width,
+   caps, and joins, plus any styling the page applies through CSS. Read
+   computed styles where color or stroke comes from a stylesheet. Where the
+   reference colors an icon with its text color, use `currentColor` so the
+   skin's tokens can color it.
+4. Save one file per icon and state in `design/reference/icons/`, and record
+   the source URL and the size the reference renders each icon at.
+5. Render them inside the Video.js controls. In an HTML skin, register them
+   with `registerIcons` under the names the markup's `<media-icon>` elements
+   use; in React, render them as components in place of the skin's icon
+   components. Keep each
+   icon `aria-hidden="true"`; the control supplies the accessible name,
+   keyboard support, and state, and state variants switch on the control's
+   `data-*` attributes.
+
+Logos and brand marks aren't control icons; leave them out unless the user
+owns them. If the icons belong to another company, tell the user before they
+publish the skin: a private build or study is one thing, a public release may
+need permission. Some players use openly licensed sets, so check the license
+where the set is identifiable.
 
 Never mix sources within one player, and never improvise a single path to
 fill a gap; draw it as part of the set.

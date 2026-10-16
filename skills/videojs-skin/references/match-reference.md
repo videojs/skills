@@ -46,8 +46,10 @@ exact values where the browser allows. Save a crop of each state below in
 | `focus` | Keyboard focus on a button, the slider, and a menu item |
 | `narrow` | The control bar at a narrow width |
 
-When the user wants the icons replicated, also save each icon's SVG markup
-from the page, per state, in `design/reference/icons/`.
+Extract the reference's control icons too; matching a player includes its
+icons, so don't wait to be asked. Save each icon's SVG, with every state
+variant, in `design/reference/icons/` and record the source URL, following
+the `videojs-ui` skill's icon guidance.
 
 Add crops for anything else the user cares about, such as fullscreen, touch,
 or transitions stepped through frame by frame. If a state can't be captured,
@@ -111,10 +113,13 @@ translations.
    tokens too: one control size for every button, radii derived from the
    inner radius and padding, one menu surface, one icon size and stroke.
 3. Settle the icons before using them anywhere, following the `videojs-ui`
-   skill's icon guidance: when replicating the reference's icons, use its
-   SVGs from `design/reference/icons/` as the source; otherwise use or draw
-   one consistent set. Draw them at the size they render, and review the whole
-   set at actual size and enlarged before applying it.
+   skill's icon guidance. Use the extracted SVGs from `design/reference/icons/`
+   inside the Video.js controls. Substitute only where an icon couldn't be
+   extracted, its reuse is restricted, or the user asked for a different set,
+   and record the concrete reason in the spec; matching the starting skin or
+   saving time is not a reason. Draw icons for **derived** controls to match
+   the extracted set, and review the whole set at actual size and enlarged
+   before applying it.
 4. Arrange controls and menus to the spec, then style controls from the
    tokens, then add states and motion.
 5. After each pass, consolidate. Delete rules that a later rule overrides,
@@ -136,21 +141,27 @@ or ask the user to review it, until it passes.
 4. When you correct something, recapture its neighbors too: collapsed and
    expanded volume, hover and keyboard focus, menu and submenu, and the
    narrow layout. Fixes in one state often break the next.
-5. Always check focus rings and tooltips. Focus rings are required even when
+5. Check the icons: every control whose reference icon could be extracted
+   uses it, in every state. Each substitute needs its recorded extraction or
+   reuse limitation, or a user request; listing it as a deliberate difference
+   doesn't pass.
+6. Always check focus rings and tooltips. Focus rings are required even when
    the reference shows none: visible and consistent on buttons, the slider,
    and menu items. Tooltips follow the reference; when the skin has them,
    every tooltip sits at the same offset from its control and in the same
    style, including at the player's edges.
-6. Report with the evidence: the remaining differences with reasons, the
-   **derived** parts that need the user's attention, a note if the font stack
-   differs from the reference, and the crop pairs, alongside the build and
-   interaction checks.
+7. Report with the evidence: the remaining differences with reasons, the
+   **derived** parts that need the user's attention, any substituted icons
+   and why, a note if the font stack differs from the reference, and the crop
+   pairs, alongside the build and interaction checks.
 
 ## Rules that still apply
 
-- Copy the reference's icon SVGs only when the user asks to replicate the
-  icons, and tell them if the icons belong to another company before they
-  publish. Leave out logos and brand marks unless the user owns them.
+- Control icons are part of the look, so use the reference's own. If they
+  belong to another company, tell the user before they publish: a private
+  build or study is one thing, a public release may need permission. Logos
+  and brand marks are not control icons; leave them out unless the user owns
+  them.
 - Match behavior through Video.js components, not by porting the original's
   markup or scripts.
 - Keep the Video.js accessibility rules where the reference breaks them, such

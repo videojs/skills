@@ -62,9 +62,10 @@ appended to page URLs. By title:
   rates and counts that change while playing, so digits keep their width and
   the layout never shifts. Allow room for hours on long media and for live
   labels.
-- **Icons are one set, drawn at the size they render.** Choose the source
-  once: the reference's own SVGs when replicating them, an existing set, or
-  a new set with one grid, stroke, radius, and style. Never mix sets. Show
+- **Icons are one set, drawn at the size they render.** When matching a
+  reference player, its extracted SVGs are the default source, with or
+  without an explicit request. Otherwise use an existing set, or a new set
+  with one grid, stroke, radius, and style. Never mix sets. Show
   icons at the size they were drawn for, and where one must render at another
   size, such as a 24px icon at 18px, check it at that size and redraw it if
   it blurs. Read `references/icons.md` before adding or changing icons.
