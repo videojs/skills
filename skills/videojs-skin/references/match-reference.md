@@ -32,7 +32,9 @@ results are the main source of corrections later.
 ## 2. Capture reference crops
 
 Take screenshots at the player's actual size, and inspect computed styles for
-exact values where the browser allows. Save a crop of each state below in
+exact values where the browser allows. Inspect each control's and popup's
+`::before` and `::after` too: pointers, arrows, dividers, and highlights are
+often drawn there and missing from the element's own styles. Save a crop of each state below in
 `design/reference/`, named after the state, such as `volume-expanded.png`:
 
 | Crop | Shows |
@@ -42,7 +44,7 @@ exact values where the browser allows. Save a crop of each state below in
 | `volume-collapsed`, `volume-expanded` | Volume before and after it opens |
 | `menu`, `submenu` | The root settings menu, and one submenu |
 | `tooltip` | Tooltips on a control in the bar and one at its edge, if the player has them |
-| `seek-preview` | The time slider while hovering, with its preview |
+| `seek-preview-start`, `seek-preview-middle`, `seek-preview-end` | The time slider's preview and time label while hovering near the start, the middle, and the end, where labels usually clamp to the edges |
 | `focus` | Keyboard focus on a button, the slider, and a menu item |
 | `narrow` | The control bar at a narrow width |
 
@@ -81,7 +83,15 @@ below show the format only:
 
 Include at least button size, surface padding and radii, icon size and
 stroke, font families, sizes, and weights, menu widths, tooltip offset, focus
-ring width, color, and offset, and preview dimensions. Mark each source
+ring width, color, and offset, and preview dimensions.
+
+For every popup (tooltips, the volume popup, menus, and the seek preview),
+measure its edges against both its trigger and the control bar: the gap
+from the trigger, the distance from the bar's top edge, the horizontal
+alignment to the trigger's center or edge, and how it clamps near the
+player's edges. Read them from element bounds, such as
+`getBoundingClientRect()`, rather than estimating from a screenshot, and
+record each distance in the table. Mark each source
 **observed** (measured from the reference), **assumed** (not visible),
 **preference** (the user asked for it, including later corrections), or
 **derived** (not in the reference, styled from it; see below). Record relationships, not just values: if
@@ -109,7 +119,9 @@ translations.
 
 1. Pick the starting skin whose controls are closest; Scaffold when the look
    is built from scratch.
-2. Put the measurements into shared tokens, expressing relationships as
+2. Replace the starting skin's offsets, gaps, and popup positions with the
+   measured values; don't keep an inherited value because it looks close.
+   Put the measurements into shared tokens, expressing relationships as
    tokens too: one control size for every button, radii derived from the
    inner radius and padding, one menu surface, one icon size and stroke.
 3. Settle the icons before using them anywhere, following the `videojs-ui`
@@ -136,6 +148,11 @@ or ask the user to review it, until it passes.
 2. Compare each pair and write `design/fidelity.md`: one row per crop, each
    visible difference in size, spacing, radius, icon shape, stroke, type,
    color, or position, and its status.
+   For popup positions, pointers and arrows, and time-label alignment at the
+   timeline's start, middle, and end, a row is **matched** only with
+   measured evidence: the same distances read from element bounds in the
+   reference and the workbench, side by side. A matching screenshot alone
+   doesn't pass.
 3. Fix every difference you can, recapture, and repeat until what remains is
    deliberate, such as an accessibility rule, or unknown.
 4. When you correct something, recapture its neighbors too: collapsed and
