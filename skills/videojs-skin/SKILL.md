@@ -35,7 +35,8 @@ Skip this when the working directory already has a `skin.json`.
    skip this skill's workbench and publishing steps; the design guidance in
    steps 3 and 4 and the `videojs-ui` skill still apply, checked in the app.
 2. Propose every choice in one message and confirm once. Framework is React
-   or HTML. For the starting skin, ask whether they want to build their own
+   or HTML. Styling is Tailwind CSS or plain CSS for React; HTML skins use
+   CSS. Recommend whichever the user's app already uses. For the starting skin, ask whether they want to build their own
    design from a foundation (Scaffold, every control wired up with minimal
    styling) or brand a finished design (Neutral is easy to brand, Default is
    the distinct Video.js design, Compat trades features for browser reach).
@@ -73,8 +74,7 @@ and correcting them later is the slowest path.
   screenshots, or a design file: follow `references/match-reference.md`. It
   saves reference crops, writes `design/spec.md` with measurements, and asks
   the user only about what the reference can't show. Matching a player
-  includes its control icons: extract and use the reference's SVGs unless
-  that's impossible or restricted.
+  includes its control icons, redrawn rather than copied.
 - **An original design**: write a short `design/spec.md` from the user's
   brief covering layout and control order, menus, icon style, type, colors and
   surfaces, slider, and motion, and confirm it once.
@@ -146,6 +146,11 @@ Cloudflare Pages. It creates a public URL and signs in to the host, so run it
 only when the user asks. Without a terminal, name the host:
 `<package manager> run deploy vercel`. With pnpm, keep `run`: `pnpm deploy` is
 a different, built-in command. The user completes the host's sign-in.
+
+If the skin resembles another company's player, remind the user before they
+publish or ship it to confirm they have permission for anything borrowed:
+icons, fonts, colors, and the overall look. A private build or study is one
+thing; production may need permission.
 
 ## Send feedback upstream, with consent
 

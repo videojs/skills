@@ -48,10 +48,8 @@ often drawn there and missing from the element's own styles. Save a crop of each
 | `focus` | Keyboard focus on a button, the slider, and a menu item |
 | `narrow` | The control bar at a narrow width |
 
-Extract the reference's control icons too; matching a player includes its
-icons, so don't wait to be asked. Save each icon's SVG, with every state
-variant, in `design/reference/icons/` and record the source URL, following
-the `videojs-ui` skill's icon guidance.
+Capture the control icons too, in every state, following "Redraw a
+reference's icons" in the `videojs-ui` skill's icon guidance.
 
 Add crops for anything else the user cares about, such as fullscreen, touch,
 or transitions stepped through frame by frame. If a state can't be captured,
@@ -98,8 +96,7 @@ record each distance in the table. Mark each source
 buttons share a size or radii are concentric (outer radius equals inner
 radius plus the padding between), say so.
 
-Build only what is observed or requested. Leave out anything the reference
-doesn't show, such as a title overlay, episode details, a "next episode"
+Leave out anything the reference doesn't show, such as a title overlay, episode details, a "next episode"
 button, or center controls, unless the user asks for it. Ask the user only
 about **unknown** and **assumed** items that change the design, and only
 once; don't ask them to approve what you observed.
@@ -121,21 +118,13 @@ translations.
    is built from scratch.
 2. Replace the starting skin's offsets, gaps, and popup positions with the
    measured values; don't keep an inherited value because it looks close.
-   Put the measurements into shared tokens, expressing relationships as
-   tokens too: one control size for every button, radii derived from the
-   inner radius and padding, one menu surface, one icon size and stroke.
-3. Settle the icons before using them anywhere, following the `videojs-ui`
-   skill's icon guidance. Use the extracted SVGs from `design/reference/icons/`
-   inside the Video.js controls. Substitute only where an icon couldn't be
-   extracted, its reuse is restricted, or the user asked for a different set,
-   and record the concrete reason in the spec; matching the starting skin or
-   saving time is not a reason. Draw icons for **derived** controls to match
-   the extracted set, and review the whole set at actual size and enlarged
-   before applying it.
+   Put them in shared tokens, with relationships as tokens too, such as radii
+   derived from the inner radius and padding.
+3. Redraw the whole icon set, including icons for **derived** controls, and
+   review it before using it anywhere, following the `videojs-ui` skill's icon
+   guidance.
 4. Arrange controls and menus to the spec, then style controls from the
-   tokens, then add states and motion.
-5. After each pass, consolidate. Delete rules that a later rule overrides,
-   fold repeated values into tokens, and keep one rule per decision.
+   tokens, then add states and motion, consolidating after each pass.
 
 ## 5. Check fidelity before handing back
 
@@ -158,29 +147,27 @@ or ask the user to review it, until it passes.
 4. When you correct something, recapture its neighbors too: collapsed and
    expanded volume, hover and keyboard focus, menu and submenu, and the
    narrow layout. Fixes in one state often break the next.
-5. Check the icons: every control whose reference icon could be extracted
-   uses it, in every state. Each substitute needs its recorded extraction or
-   reuse limitation, or a user request; listing it as a deliberate difference
-   doesn't pass.
-6. Always check focus rings and tooltips. Focus rings are required even when
-   the reference shows none: visible and consistent on buttons, the slider,
-   and menu items. Tooltips follow the reference; when the skin has them,
-   every tooltip sits at the same offset from its control and in the same
-   style, including at the player's edges.
+5. Check the icons against `design/reference/icons/` in every state. An icon
+   that differs needs a recorded user request; listing it as a deliberate
+   difference doesn't pass.
+6. Always check focus rings and tooltips against the `videojs-ui` rule for
+   them. Focus rings are required even when the reference shows none.
 7. Report with the evidence: the remaining differences with reasons, the
-   **derived** parts that need the user's attention, any substituted icons
-   and why, a note if the font stack differs from the reference, and the crop
-   pairs, alongside the build and interaction checks.
+   **derived** parts that need the user's attention, icons that differ and
+   why, a note if the font stack differs from the reference, the permission
+   reminder below, and the crop pairs, alongside the build and interaction
+   checks.
 
 ## Rules that still apply
 
-- Control icons are part of the look, so use the reference's own. If they
-  belong to another company, tell the user before they publish: a private
-  build or study is one thing, a public release may need permission. Logos
-  and brand marks are not control icons; leave them out unless the user owns
+- Recreate, don't copy. Match the look by drawing icons and writing styles
+  yourself from what you observe, and match behavior through Video.js
+  components. Never paste the reference's SVG, markup, stylesheets, or
+  scripts into the skin. Logos and brand marks stay out unless the user owns
   them.
-- Match behavior through Video.js components, not by porting the original's
-  markup or scripts.
+- Remind the user, in the hand-back and again before they publish or ship,
+  to confirm they have permission for anything that resembles another
+  company's product: icons, fonts, colors, and the overall look.
 - Keep the Video.js accessibility rules where the reference breaks them, such
   as low-contrast controls, missing focus indicators, or controls with no
   accessible name. Record each deliberate difference in `design/fidelity.md`.

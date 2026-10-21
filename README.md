@@ -4,9 +4,7 @@
 
 Official agent skills for building customizable, accessible video and audio players with [Video.js 10](https://videojs.org), an open-source library of composable, framework-native components for React and the web.
 
-The skill is deliberately thin. It teaches an agent how Video.js 10 is put together, how to get installation instructions and docs that match the installed version, and what to check before handing code back. The Video.js CLI prints version-matched installation plans, and the player packages ship their docs under `docs/`, so the agent can work locally and offline instead of relying on training data or a live fetch.
-
-You can [read SKILL.md on GitHub](https://github.com/videojs/skills/blob/main/skills/videojs/SKILL.md) or fetch its [raw Markdown](https://raw.githubusercontent.com/videojs/skills/main/skills/videojs/SKILL.md).
+The plugin ships three skills: [`videojs`](skills/videojs/SKILL.md) to install and configure a player, [`videojs-skin`](skills/videojs-skin/SKILL.md) to design your own skin, and [`videojs-ui`](skills/videojs-ui/SKILL.md) to build and review player UI. Each is deliberately thin. They teach an agent how Video.js 10 is put together, where to find installation instructions and docs that match the installed version, and what to check before handing code back. The Video.js CLI prints version-matched installation plans, and the player packages ship their docs under `docs/`, so the agent can work locally and offline instead of relying on training data or a live fetch.
 
 ## Installing
 
@@ -44,7 +42,7 @@ Install directly from this repository:
 
 ### Cursor
 
-Open **Customize**, select **Plugins**, choose **From GitHub Repository**, and enter `https://github.com/videojs/skills`. The repository's Cursor marketplace installs the `videojs` skill.
+Open **Customize**, select **Plugins**, choose **From GitHub Repository**, and enter `https://github.com/videojs/skills`. The repository's Cursor marketplace installs all three skills.
 
 ### npx skills
 
@@ -71,7 +69,7 @@ Clone this repository and copy each folder in `skills/` (`videojs`, `videojs-ski
 Paste this into your agent:
 
 ```text
-Install the Video.js skill using one method. In Codex, run `codex plugin marketplace add videojs/skills`, then `codex plugin add videojs@videojs`, and start a new session. In Claude Code, run `claude plugin marketplace add videojs/skills`, then `claude plugin install videojs@videojs`, and start a new session or run `/reload-plugins`. In VS Code or Cursor, install `https://github.com/videojs/skills` as a plugin from source. For another agent, run `npx skills add https://github.com/videojs/skills` and select the agent. Then use the Video.js skill when working on this project.
+Install the Video.js skills using one method. In Codex, run `codex plugin marketplace add videojs/skills`, then `codex plugin add videojs@videojs`, and start a new session. In Claude Code, run `claude plugin marketplace add videojs/skills`, then `claude plugin install videojs@videojs`, and start a new session or run `/reload-plugins`. In VS Code or Cursor, install `https://github.com/videojs/skills` as a plugin from source. For another agent, run `npx skills add https://github.com/videojs/skills` and select the agent. Then use the Video.js skills when working on this project.
 ```
 
 ## Use
@@ -94,7 +92,7 @@ In Claude Code, you can invoke the skills explicitly with `/videojs:videojs`, `/
 | [videojs-skin](skills/videojs-skin/SKILL.md) | Design your own Video.js skin: set up a standalone project and preview workbench with `npx @videojs/cli skin create`, build the skin's look, layout, and motion within the player's accessibility and structure rules, review it across sizes, languages, and playback states, and publish the workbench |
 | [videojs-ui](skills/videojs-ui/SKILL.md) | Build, polish, and review player UI such as controls, menus, time displays, icon states, and motion, adjusting interface-craft skills for UI that sits over moving video, with a media-player accessibility review |
 
-With your permission, the skill can also draft bug reports, docs feedback, and friction logs for [videojs/v10](https://github.com/videojs/v10). It shows you the exact text first, and nothing is sent unless you say so.
+With your permission, the skills can also draft bug reports, docs feedback, and friction logs for [videojs/v10](https://github.com/videojs/v10). It shows you the exact text first, and nothing is sent unless you say so.
 
 ### Design your own skin
 
@@ -135,7 +133,7 @@ See the [Build with AI](https://videojs.org/docs/framework/html/guides/build-wit
 
 ## Contributing
 
-Keep `SKILL.md` short and stable across releases. Version-specific detail belongs in the docs that ship inside the packages, and conditional detail belongs in `skills/videojs/references/`. Open an issue or pull request in this repository for the skill, and in [videojs/v10](https://github.com/videojs/v10) for the docs it points to.
+Keep each `SKILL.md` short and stable across releases. Version-specific detail belongs in the docs that ship inside the packages, and conditional detail belongs in that skill's `references/` folder. State each rule once, in the skill that owns it, and point to it from the others. Run `node scripts/validate-plugin.mjs` before opening a pull request; it checks every folder in `skills/`. Open an issue or pull request in this repository for the skills, and in [videojs/v10](https://github.com/videojs/v10) for the docs it points to.
 
 ## License
 

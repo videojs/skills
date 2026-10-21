@@ -8,35 +8,39 @@ blurry icons are the first thing people notice.
 
 Decide once for the whole player, before using any icon:
 
-- **Matching a reference player**: use its own control icons. A request to
-  look like, match, or replicate a player includes them; don't wait to be
-  asked. See "Extract a reference's icons" below.
+- **Matching a reference player**: redraw its control icons so they look
+  identical. A request to look like, match, or replicate a player includes
+  them; don't wait to be asked. See "Redraw a reference's icons" below.
 - **The skin's own set, or another Video.js icon set**: use it as is, and
   draw any missing icon to match it.
 - **A new set**: draw every icon to the rules below.
 
-When matching a reference, substitute another source only when an icon can't
-be extracted (it's an icon font, an image, or drawn in canvas), its reuse is
-restricted, or the user asks for a different set. Record the concrete reason
-per icon in the spec. Matching the starting skin, or saving time, is not a
-reason.
+When matching a reference, use a different icon only when the user asks for
+one, and record that per icon in the spec. Matching the starting skin, or
+saving time, is not a reason.
 
-## Extract a reference's icons
+## Redraw a reference's icons
+
+Write every icon's SVG yourself. Never paste, trace, or convert the
+reference's SVG markup into the skin, even when it's one click away; the
+look is the target, not the code. Landing on the same coordinates while
+drawing your own is fine.
 
 1. In the browser your agent controls, inspect each control in every state:
    play and pause, mute, unmute, and volume levels, fullscreen enter and exit,
    captions on and off, picture-in-picture, and the settings and menu icons.
-2. Copy each `<svg>` as it renders. When it draws from a sprite through
-   `<use href="#id">` or an external `sprite.svg#id`, resolve the reference
-   and copy the `<symbol>` it points to, with that symbol's `viewBox`.
-3. Keep the `viewBox`, paths, fills, strokes, `fill-rule`, stroke width,
-   caps, and joins, plus any styling the page applies through CSS. Read
-   computed styles where color or stroke comes from a stylesheet. Where the
-   reference colors an icon with its text color, use `currentColor` so the
-   skin's tokens can color it.
-4. Save one file per icon and state in `design/reference/icons/`, and record
-   the source URL and the size the reference renders each icon at.
-5. Render them inside the Video.js controls. In an HTML skin, register them
+2. Save a crop of each icon and state in `design/reference/icons/`, at its
+   rendered size and enlarged, and record the source URL and the size it
+   renders at.
+3. Measure what you need to match: rendered size, stroke width, caps and
+   joins, filled or outlined, and how it's colored. Reading these from the
+   page or computed styles is fine.
+4. Draw each icon on a grid the size it renders at, following "Make it a set"
+   and "Render at 100%" below. Where the reference colors an icon with its
+   text color, use `currentColor` so the skin's tokens can color it.
+5. Compare each icon with its crop, overlaid at actual size and enlarged, and
+   adjust until no difference is visible.
+6. Render them inside the Video.js controls. In an HTML skin, register them
    with `registerIcons` under the names the markup's `<media-icon>` elements
    use; in React, render them as components in place of the skin's icon
    components. Keep each
@@ -45,10 +49,10 @@ reason.
    `data-*` attributes.
 
 Logos and brand marks aren't control icons; leave them out unless the user
-owns them. If the icons belong to another company, tell the user before they
-publish the skin: a private build or study is one thing, a public release may
-need permission. Some players use openly licensed sets, so check the license
-where the set is identifiable.
+owns them. A redrawn icon can still resemble another company's design, so
+before the player goes to production, tell the user to confirm they have
+permission to use it. Some players use openly licensed sets; name the set and
+its license when you can identify it.
 
 Never mix sources within one player, and never improvise a single path to
 fill a gap; draw it as part of the set.
@@ -74,14 +78,13 @@ Aim to show every icon at the size it was drawn for. An icon drawn on a 24px
 grid and shown at 18px scales every stroke and edge to fractional pixels,
 which blurs and thickens it.
 
-- **New icons:** draw them on a grid the size they're displayed at, with a
-  `viewBox` to match, such as `viewBox="0 0 18 18"` shown at `18px`. Snap
-  straight edges to whole pixels, and center odd-width strokes on half pixels
-  so they render crisp.
-- **Copied or existing icons:** keep their `viewBox` and paths, and show them
-  at the size they were drawn for, which for a reference is the size it
-  renders them at. Never change a `viewBox` on its own to resize an icon;
-  that crops or shifts it.
+- **New and redrawn icons:** draw them on a grid the size they're displayed
+  at, with a `viewBox` to match, such as `viewBox="0 0 18 18"` shown at
+  `18px`. Snap straight edges to whole pixels, and center odd-width strokes
+  on half pixels so they render crisp.
+- **Existing icons:** keep their `viewBox` and paths, and show them at the
+  size they were drawn for. Never change a `viewBox` on its own to resize an
+  icon; that crops or shifts it.
 - **When an icon must show at another size:** scaling through the `viewBox`
   is valid SVG. Inspect the result at its rendered size, and redraw the icon
   on the new grid only where you can see blurred edges or a stroke weight

@@ -63,12 +63,10 @@ appended to page URLs. By title:
   the layout never shifts. Allow room for hours on long media and for live
   labels.
 - **Icons are one set, drawn at the size they render.** When matching a
-  reference player, its extracted SVGs are the default source, with or
-  without an explicit request. Otherwise use an existing set, or a new set
-  with one grid, stroke, radius, and style. Never mix sets. Show
-  icons at the size they were drawn for, and where one must render at another
-  size, such as a 24px icon at 18px, check it at that size and redraw it if
-  it blurs. Read `references/icons.md` before adding or changing icons.
+  reference player, redraw its icons to look identical; don't copy its SVG.
+  Otherwise use an existing set, or a new set with one grid, stroke, radius,
+  and style. Never mix sets. Read `references/icons.md` before adding or
+  changing icons.
 - **Swap icon states in place.** Play and pause, volume levels, and enter or
   exit icons share one position and switch on the component's `data-*`
   attributes, crossfading rather than jumping. Keep one stroke weight and

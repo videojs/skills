@@ -11,11 +11,11 @@ polishing, and again before handing back. Put screenshots side by side in the
 same states and sizes, especially paused, slider hover, the volume popup,
 every menu, and a narrow layout. Check control order, icon shapes and stroke
 weight, type, surfaces and radii, slider details, and hover and press
-feedback. When matching a reference player, confirm its own icons are used
-wherever they could be extracted, and that every substitute has a recorded
-extraction or reuse limitation, or a user request. List each difference, and
-flag anything present that the reference and the user don't account for. Fix what you can yourself before asking the
-user to look, and report with the screenshots as evidence, alongside the
+feedback. When matching a reference player, confirm every icon matches the
+reference in every state, with any exception recorded as a user request.
+List each difference, and flag anything present that the reference and the
+user don't account for. Fix what you can yourself before asking the user to
+look, and report with the screenshots as evidence, alongside the
 build and interaction checks.
 
 ## States

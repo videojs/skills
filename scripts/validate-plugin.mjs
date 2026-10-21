@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const root = process.cwd();
@@ -176,7 +176,12 @@ assert(
   "Skill body must name literal video and audio elements",
 );
 
-for (const name of ["videojs", "videojs-skin", "videojs-ui"]) {
+const skillNames = readdirSync(resolve(root, "skills"), { withFileTypes: true })
+  .filter((entry) => entry.isDirectory())
+  .map(({ name }) => name);
+const readme = readFileSync(resolve(root, "README.md"), "utf8");
+
+for (const name of skillNames) {
   const path = `skills/${name}/SKILL.md`;
   assert(existsSync(resolve(root, path)), `Missing ${path}`);
   assert(existsSync(resolve(root, `skills/${name}/LICENSE`)), `Missing skills/${name}/LICENSE`);
@@ -186,6 +191,7 @@ for (const name of ["videojs", "videojs-skin", "videojs-ui"]) {
   assert(frontmatterName.test(source), `${path} frontmatter name is invalid`);
   assert(Buffer.byteLength(source, "utf8") < 10_000, `${path} must stay under 10,000 bytes`);
   assert(source.trimEnd().split("\n").length < 200, `${path} must stay under 200 lines`);
+  assert(readme.includes(`(${path})`), `README must link ${path}`);
 }
 
 const skinSkill = readFileSync(resolve(root, "skills/videojs-skin/SKILL.md"), "utf8");
@@ -194,7 +200,6 @@ assert(
   "videojs-skin must set up projects with the Video.js CLI",
 );
 
-const readme = readFileSync(resolve(root, "README.md"), "utf8");
 for (const instruction of [
   "codex plugin add videojs@videojs",
   "claude plugin install videojs@videojs",
