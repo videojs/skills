@@ -84,7 +84,8 @@ and correcting them later is the slowest path.
   screenshots, or a design file: follow `references/match-reference.md`. It
   saves reference crops, writes `design/spec.md` with measurements, and asks
   the user only about what the reference can't show. Matching a player
-  includes its control icons, redrawn rather than copied.
+  includes its control icons: exported from the user's own design file, or
+  redrawn, never copied, from someone else's player.
 - **An original design**: write a short `design/spec.md` from the user's
   brief covering layout and control order, menus, icon style, type, colors and
   surfaces, slider, and motion, and confirm it once.
