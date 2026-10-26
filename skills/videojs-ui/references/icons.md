@@ -8,7 +8,11 @@ blurry icons are the first thing people notice.
 
 Decide once for the whole player, before using any icon:
 
-- **Matching a reference player**: redraw its control icons so they look
+- **The user's own design**, such as their Figma file: use the icons it
+  contains, exported as they are; they're the user's assets. When they come
+  from an openly licensed set, such as Lucide, name the set and its license,
+  and take any icon the design lacks from the same set.
+- **Matching someone else's player**: redraw its control icons so they look
   identical. A request to look like, match, or replicate a player includes
   them; don't wait to be asked. See "Redraw a reference's icons" below.
 - **The skin's own set, or another Video.js icon set**: use it as is, and

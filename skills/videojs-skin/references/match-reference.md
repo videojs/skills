@@ -48,7 +48,8 @@ often drawn there and missing from the element's own styles. Save a crop of each
 | `focus` | Keyboard focus on a button, the slider, and a menu item |
 | `narrow` | The control bar at a narrow width |
 
-Capture the control icons too, in every state, following "Redraw a
+Capture the control icons too, in every state. From the user's own design
+file, export them as they are; from someone else's player, follow "Redraw a
 reference's icons" in the `videojs-ui` skill's icon guidance.
 
 Add crops for anything else the user cares about, such as fullscreen, touch,
@@ -120,9 +121,10 @@ translations.
    measured values; don't keep an inherited value because it looks close.
    Put them in shared tokens, with relationships as tokens too, such as radii
    derived from the inner radius and padding.
-3. Redraw the whole icon set, including icons for **derived** controls, and
+3. Settle the whole icon set, including icons for **derived** controls, and
    review it before using it anywhere, following the `videojs-ui` skill's icon
-   guidance.
+   guidance: the design's own icons for a user's design file, redrawn icons
+   for someone else's player.
 4. Arrange controls and menus to the spec, then style controls from the
    tokens, then add states and motion, consolidating after each pass.
 
@@ -160,11 +162,13 @@ or ask the user to review it, until it passes.
 
 ## Rules that still apply
 
-- Recreate, don't copy. Match the look by drawing icons and writing styles
-  yourself from what you observe, and match behavior through Video.js
-  components. Never paste the reference's SVG, markup, stylesheets, or
-  scripts into the skin. Logos and brand marks stay out unless the user owns
-  them.
+- The user's own design files are theirs to use: take values, icons, and
+  assets from them directly. Match behavior through Video.js components
+  either way.
+- For someone else's player, recreate, don't copy. Match the look by drawing
+  icons and writing styles yourself from what you observe. Never paste the
+  reference's SVG, markup, stylesheets, or scripts into the skin. Logos and
+  brand marks stay out unless the user owns them.
 - Remind the user, in the hand-back and again before they publish or ship,
   to confirm they have permission for anything that resembles another
   company's product: icons, fonts, colors, and the overall look.

@@ -96,7 +96,7 @@ With your permission, the skills can also draft bug reports, docs feedback, and 
 
 ### Design your own skin
 
-Build a Video.js skin from a starting point, preview it in a local workbench across player sizes, languages, and playback settings, and publish the workbench to share. Nothing needs cloning; choose how you want to work.
+Build a Video.js skin from a starting point, preview it in a local workbench across player sizes, languages, and playback settings, and publish the workbench to share. Nothing needs cloning; choose how you want to work. Either way you need [Node.js](https://nodejs.org) installed; the skill checks for it and explains how to install it if it's missing.
 
 **With your agent.** Install the skills using any method above, then ask, for example:
 

@@ -26,7 +26,16 @@ Shadcn installation method; the `videojs` skill covers that.
 
 Skip this when the working directory already has a `skin.json`.
 
-1. Run `npx @videojs/cli skin create <directory> --name <name>`. Without a
+Assume the user may never have used a terminal. Run every command yourself,
+say in plain words what each one does, and only ask the user to act where
+you can't: installing software that needs their password, or signing in.
+
+1. Run `node --version`. If Node.js is missing, or older than the current
+   LTS release, stop and explain: the project needs Node.js, and the user
+   installs it once with the LTS installer from https://nodejs.org. Don't
+   install it for them; the installer asks for their password. Continue once
+   `node --version` works.
+2. Run `npx @videojs/cli skin create <directory> --name <name>`. Without a
    terminal it changes nothing and lists the choices left to make, with their
    defaults; `--help` explains them. If `skin create` is not recognized, the
    CLI predates it. Hand off: add the skin source to an app with the `videojs`
@@ -34,7 +43,7 @@ Skip this when the working directory already has a `skin.json`.
    That route creates no `skin.json`, `apps/preview/`, or `deploy` script, so
    skip this skill's workbench and publishing steps; the design guidance in
    steps 3 and 4 and the `videojs-ui` skill still apply, checked in the app.
-2. Propose every choice in one message and confirm once. Framework is React
+3. Propose every choice in one message and confirm once. Framework is React
    or HTML. Styling is Tailwind CSS or plain CSS for React; HTML skins use
    CSS. Recommend whichever the user's app already uses. For the starting skin, ask whether they want to build their own
    design from a foundation (Scaffold, every control wired up with minimal
@@ -44,9 +53,10 @@ Skip this when the working directory already has a `skin.json`.
    If the skin should match an existing player or design, read
    `references/match-reference.md` first; the reference decides the starting
    skin.
-3. Run the command again with every choice as a flag. It installs
+4. Run the command again with every choice as a flag. It installs
    dependencies and prints the commands to start the workbench. Start the
-   dev server in the background and share the workbench URL it prints.
+   dev server in the background and share the workbench URL it prints, with
+   a sentence on where the skin's files are and how to open them.
 
 ## 2. Orient
 
@@ -74,7 +84,8 @@ and correcting them later is the slowest path.
   screenshots, or a design file: follow `references/match-reference.md`. It
   saves reference crops, writes `design/spec.md` with measurements, and asks
   the user only about what the reference can't show. Matching a player
-  includes its control icons, redrawn rather than copied.
+  includes its control icons: exported from the user's own design file, or
+  redrawn, never copied, from someone else's player.
 - **An original design**: write a short `design/spec.md` from the user's
   brief covering layout and control order, menus, icon style, type, colors and
   surfaces, slider, and motion, and confirm it once.
