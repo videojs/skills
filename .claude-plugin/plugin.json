@@ -1,7 +1,7 @@
 {
   "name": "videojs",
   "displayName": "Video.js",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Build customizable, accessible video and audio players with Video.js 10, an open-source library of composable, framework-native components for React and the web.",
   "author": {
     "name": "Video.js",
